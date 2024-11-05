@@ -9,35 +9,104 @@
   <!-- Include Lucide Icons from CDN -->
   <script src="https://cdn.jsdelivr.net/npm/lucide-react@0.263.1/dist/lucide-react.min.js"></script>
   <style>
-    /* Custom Scrollbar Styles */
+    /* Previous scrollbar styles remain */
     ::-webkit-scrollbar {
       width: 8px;
     }
-
     ::-webkit-scrollbar-track {
       background: #f1f1f1;
       border-radius: 4px;
     }
-
     ::-webkit-scrollbar-thumb {
-      background: #2563eb; /* Matching the blue from the gradient */
+      background: #2563eb;
       border-radius: 4px;
       transition: background 0.2s;
     }
-
     ::-webkit-scrollbar-thumb:hover {
-      background: #1d4ed8; /* Slightly darker on hover */
+      background: #1d4ed8;
     }
-
-    /* For Firefox */
     * {
       scrollbar-width: thin;
       scrollbar-color: #2563eb #f1f1f1;
     }
-
-    /* Smooth Scrolling */
     html {
       scroll-behavior: smooth;
+    }
+
+    /* New Button Hover Effects */
+    .primary-button {
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      transform: translateY(0);
+      background: white;
+    }
+
+    .primary-button:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(120deg, rgba(255,255,255,0) 0%, rgba(37,99,235,0.1) 100%);
+      transform: translateX(-100%);
+      transition: transform 0.5s ease;
+    }
+
+    .primary-button:hover {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 4px 15px rgba(37,99,235,0.2);
+    }
+
+    .primary-button:hover:before {
+      transform: translateX(0);
+    }
+
+    .secondary-button {
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      transform: translateY(0);
+    }
+
+    .secondary-button:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(120deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.2) 100%);
+      transform: translateX(-100%);
+      transition: transform 0.5s ease;
+    }
+
+    .secondary-button:hover {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    }
+
+    .secondary-button:hover:before {
+      transform: translateX(0);
+    }
+
+    .feature-card {
+      transition: all 0.3s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(37,99,235,0.15);
+    }
+
+    .feature-card:hover svg {
+      transform: scale(1.1);
+      color: #1d4ed8;
+    }
+
+    .feature-card svg {
+      transition: all 0.3s ease;
     }
   </style>
 </head>
@@ -51,11 +120,12 @@
           <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6">Welcome to HSE Ping Pong</h1>
           <p class="text-lg sm:text-xl md:text-2xl mb-6 sm:mb-8 text-blue-100">Join our community of passionate players and discover the exciting world of Ping Pong</p>
           <div class="flex flex-col sm:flex-row justify-center gap-4 px-4">
-            <a href="/join" class="w-full sm:w-auto text-center bg-white text-blue-600 px-6 sm:px-8 py-3 rounded-full font-semibold hover:bg-blue-50 transition-colors">Join Now</a>
-            <a href="/schedule" class="w-full sm:w-auto text-center border-2 border-white text-white px-6 sm:px-8 py-3 rounded-full font-semibold hover:bg-white/10 transition-colors">View Schedule</a>
+            <a href="/join" class="w-full sm:w-auto text-center bg-white text-blue-600 px-6 sm:px-8 py-3 rounded-full font-semibold transition-all duration-300 ease-in-out hover:bg-blue-50 hover:scale-150 hover:shadow-lg">Join Now</a>
+            <a href="/schedule" class="w-full sm:w-auto text-center border-2 border-white text-white px-6 sm:px-8 py-3 rounded-full font-semibold transition-all duration-300 ease-in-out hover:bg-white/10 hover:scale-105 hover:shadow-lg">View Schedule</a>
           </div>
         </div>
       </div>
+    </div>
   <!-- Stats Section -->
   <div class="w-full bg-white/10 backdrop-blur-sm">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
