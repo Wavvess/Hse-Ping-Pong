@@ -35,61 +35,82 @@
 
     /* New Button Hover Effects */
     .primary-button {
-      position: relative;
-      overflow: hidden;
-      transition: all 0.3s ease;
-      transform: translateY(0);
-      background: white;
-    }
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  transform: translateY(0);
+  background: white;
+}
 
-    .primary-button:before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(120deg, rgba(255,255,255,0) 0%, rgba(37,99,235,0.1) 100%);
-      transform: translateX(-100%);
-      transition: transform 0.5s ease;
-    }
+.primary-button:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(37, 99, 235, 0.1);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}.primary-button {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  transform: translateY(0);
+  background: white;
+}
 
-    .primary-button:hover {
-      transform: translateY(-2px) scale(1.02);
-      box-shadow: 0 4px 15px rgba(37,99,235,0.2);
-    }
+.primary-button:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(37, 99, 235, 0.1);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
 
-    .primary-button:hover:before {
-      transform: translateX(0);
-    }
+.primary-button:hover {
+  transform: translateY(-2px) scale(1.02);
+  /* Stronger blue glow with higher spread and opacity */
+  box-shadow: 0 4px 15px rgba(37, 99, 235, 0.2), 0 0 15px 5px rgba(37, 99, 235, 0.6);
+}
 
-    .secondary-button {
-      position: relative;
-      overflow: hidden;
-      transition: all 0.3s ease;
-      transform: translateY(0);
-    }
+.primary-button:hover:before {
+  opacity: 1;
+}
 
-    .secondary-button:before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(120deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.2) 100%);
-      transform: translateX(-100%);
-      transition: transform 0.5s ease;
-    }
+.secondary-button {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  transform: translateY(0);
+}
 
-    .secondary-button:hover {
-      transform: translateY(-2px) scale(1.02);
-      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
-    }
+.secondary-button:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
 
-    .secondary-button:hover:before {
-      transform: translateX(0);
-    }
+.secondary-button:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15), 0 0 8px rgba(255, 255, 255, 0.5);
+}
+
+.secondary-button:hover:before {
+  opacity: 1;
+}
+
+
 
     .feature-card {
       transition: all 0.3s ease;
@@ -120,8 +141,8 @@
           <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6">Welcome to HSE Ping Pong</h1>
           <p class="text-lg sm:text-xl md:text-2xl mb-6 sm:mb-8 text-blue-100">Join our community of passionate players and discover the exciting world of Ping Pong</p>
           <div class="flex flex-col sm:flex-row justify-center gap-4 px-4">
-            <a href="/join" class="w-full sm:w-auto text-center bg-white text-blue-600 px-6 sm:px-8 py-3 rounded-full font-semibold transition-all duration-300 ease-in-out hover:bg-blue-50 hover:scale-150 hover:shadow-lg">Join Now</a>
-            <a href="/schedule" class="w-full sm:w-auto text-center border-2 border-white text-white px-6 sm:px-8 py-3 rounded-full font-semibold transition-all duration-300 ease-in-out hover:bg-white/10 hover:scale-105 hover:shadow-lg">View Schedule</a>
+            <a href="https://hsepingpong.com" class="primary-button w-full sm:w-auto text-center bg-white text-blue-600 px-6 sm:px-8 py-3 rounded-full font-semibold transition-all duration-300 ease-in-out hover:bg-blue-50 hover:scale-150 hover:shadow-lg">Leaderboard</a>
+            <a href="/calendar.html" class="secondary-button w-full sm:w-auto text-center border-2 border-white text-white px-6 sm:px-8 py-3 rounded-full font-semibold transition-all duration-300 ease-in-out hover:bg-white/10 hover:scale-105 hover:shadow-lg">View Calendar</a>
           </div>
         </div>
       </div>
@@ -312,7 +333,7 @@
       <!-- Instagram posts will be loaded here -->
     </div>
   </div>
-</div>e
+</div>
 
 <!-- CTA Section -->
 <div class="bg-blue-600 text-white py-12 sm:py-24">
@@ -321,8 +342,8 @@
       <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6">Ready to Join Our Community?</h2>
       <p class="text-lg sm:text-xl mb-6 sm:mb-8 text-blue-100">Start your Ping Pong journey today and become part of our growing community</p>
       <div class="flex flex-col sm:flex-row justify-center gap-4 px-4">
-        <a href="/join" class="w-full sm:w-auto text-center bg-white text-blue-600 px-6 sm:px-8 py-3 rounded-full font-semibold hover:bg-blue-50 transition-colors">Join Now</a>
-        <a href="/schedule" class="w-full sm:w-auto text-center border-2 border-white text-white px-6 sm:px-8 py-3 rounded-full font-semibold hover:bg-white/10 transition-colors">View Schedule</a>
+        <a href="/join" class="primary-button w-full sm:w-auto text-center bg-white text-blue-600 px-6 sm:px-8 py-3 rounded-full font-semibold hover:bg-blue-50 transition-colors">Join Now</a>
+        <a href="/schedule" class="secondary-button sm:w-auto text-center border-2 border-white text-white px-6 sm:px-8 py-3 rounded-full font-semibold hover:bg-white/10 transition-colors">View Schedule</a>
       </div>
     </div>
   </div>
