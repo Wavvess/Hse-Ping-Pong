@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Club Calendar</title>
+  <!-- Include Tailwind CSS from CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+/* Date Styles */
+.day {
+  position: relative;
+  padding: 12px;
+  background-color: #f3f4f6; /* Soft gray background */
+  border-radius: 8px;
+  font-size: 1rem;
+  color: #333;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.day:hover {
+  background-color: #2563eb;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3); /* Blue box shadow on hover */
+}
+
+/* Meeting Day Styles */
+.meeting-day {
+  background-color: #2563eb;
+  color: white;
+}
+
+/* Tooltip Styling (if applicable) */
+.day .tooltip {
+  /* Existing tooltip styles */
+}
+
+    /* Enhanced Popup Box Styles */
+/* Tooltip Styling */
+.day {
+  position: relative;
+}
+
+.day .tooltip {
+  display: none;
+  position: absolute;
+  bottom: 110%; /* Position tooltip just above the date */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(37, 99, 235, 0.85); /* Slightly translucent blue */
+  color: white;
+  padding: 2px 6px; /* Smaller padding for a compact look */
+  border-radius: 4px;
+  font-size: 0.65rem; /* Smaller font size */
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  z-index: 1;
+}
+
+.day:hover .tooltip {
+  display: block;
+  opacity: 1;
+  transform: translateX(-50%) translateY(-2px); /* Small lift effect */
+}
+
+
+/* Popup Box Styling */
+.popup-box {
+  display: none;
+  position: absolute;
+  width: 220px;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  text-align: left;
+  opacity: 0;
+  transform: translateX(20px); /* Starts off slightly to the right */
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.popup-box.show {
+  display: block;
+  opacity: 1;
+}
+
+/* Tooltip styling */
+.day {
+  position: relative;
+}
+
+.day .tooltip {
+  display: none;
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #2563eb;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  z-index: 1;
+}
+
+.day:hover .tooltip {
+  display: block;
+  opacity: 1;
+}
+
+.popup-box {
+  /* Existing popup styles */
+  display: none;
+  position: absolute;
+  width: 250px;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  z-index: 10;
+  text-align: left;
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.popup-box.show {
+  display: block;
+  opacity: 1;
+}
+
+
+    .popup-box.show {
+      display: block;
+      opacity: 1;
+      transform: translateX(0); /* Slide into view */
+    }
+
+    .popup-box.left {
+      transform: translateX(-20px); /* Slide in from the left */
+    }
+
+    #popup-date {
+      font-size: 1.2rem;
+      color: #1d4ed8;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+
+    #popup-details {
+      font-size: 1rem;
+      color: #4b5563;
+    }
+
+    .close-button {
+      display: block;
+      margin-top: 1.5rem;
+      padding: 0.5rem 1rem;
+      background-color: #2563eb;
+      color: white;
+      text-align: center;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .close-button:hover {
+      background-color: #1d4ed8;
+    }
+  </style>
+</head>
+<body class="bg-gray-50 h-screen flex items-center justify-center relative">
+
+  <!-- Calendar Container -->
+  <div class="w-full max-w-3xl bg-white shadow-lg rounded-lg p-6 sm:p-8 relative">
+    <!-- Back Button -->
+    <div class="flex justify-between items-center mb-6">
+      <a href="index.html" class="back-button bg-blue-600 text-white px-4 py-2 rounded font-semibold transition-all">
+        ← Back to Main Page
+      </a>
+      <h1 class="text-2xl sm:text-3xl font-bold text-gray-900">Club Events Calendar</h1>
+    </div>
+
+    <!-- Calendar Header (Month Navigation) -->
+    <div class="flex justify-between items-center mb-4">
+      <button id="prev-month" class="text-blue-600 font-semibold">← Previous</button>
+      <div id="month-year" class="text-xl font-bold text-gray-800">March 2023</div>
+      <button id="next-month" class="text-blue-600 font-semibold">Next →</button>
+    </div>
+
+    <!-- Calendar Grid -->
+    <div class="grid grid-cols-7 gap-2 text-center text-gray-700 font-medium">
+      <!-- Weekday Headers -->
+      <div>Sun</div>
+      <div>Mon</div>
+      <div>Tue</div>
+      <div>Wed</div>
+      <div>Thu</div>
+      <div>Fri</div>
+      <div>Sat</div>
+    </div>
+    <div class="grid grid-cols-7 gap-2 text-center mt-2" id="calendar-days">
+      <!-- Calendar days will be loaded here by JavaScript -->
+    </div>
+
+    <!-- Popup Box for Meeting Details -->
+    <div id="popup-box" class="popup-box">
+      <p id="popup-date"></p>
+      <p id="popup-details"></p>
+      <button onclick="closePopup()" class="close-button">Close</button>
+    </div>
+
+    <!-- Key for Meetings -->
+    <div class="mt-6 text-center">
+      <span class="inline-block bg-blue-600 text-white px-3 py-1 rounded-full text-xs font-medium">
+        Blue dates indicate scheduled meetings
+      </span>
+    </div>
+  </div>
+
+  <script>
+    // Define meeting dates and details
+    const meetings = [
+      { date: new Date(2024, 10, 18), details: "General Club Meeting at 3 PM" },
+      { date: new Date(2024, 10, 21), details: "Ping Pong Practice Session at 5 PM" },
+      { date: new Date(2024, 10, 28), details: "Monthly Tournament at 6 PM" },
+    ];
+
+    const calendarDays = document.getElementById('calendar-days');
+    const monthYear = document.getElementById('month-year');
+    const currentDate = new Date();
+    let displayedMonth = currentDate.getMonth();
+    let displayedYear = currentDate.getFullYear();
+
+// Elements for the popup box
+const popupBox = document.getElementById('popup-box');
+const popupDate = document.getElementById('popup-date');
+const popupDetails = document.getElementById('popup-details');
+
+// Function to show meeting details in the popup box
+function showMeetingDetails(meeting, dayElement) {
+  const options = { month: 'long', day: 'numeric', year: 'numeric' };
+  popupDate.textContent = meeting.date.toLocaleDateString('en-US', options);
+  popupDetails.textContent = meeting.details;
+
+  // Remove tooltip if present
+  const tooltip = dayElement.querySelector('.tooltip');
+  if (tooltip) tooltip.remove();
+
+  // Get position of the clicked day element within the calendar
+  const rect = dayElement.getBoundingClientRect();
+  const calendarRect = calendarDays.getBoundingClientRect();
+  const popupWidth = popupBox.offsetWidth;
+  const buffer = 40; // Increased spacing between date and popup box
+
+  // Set top position relative to the clicked date
+  popupBox.style.top = `${rect.top - calendarRect.top + window.scrollY + rect.height / 2}px`;
+
+  // Adjust left or right of the date based on space available
+  if (rect.left + popupWidth + buffer < calendarRect.right) {
+    popupBox.style.left = `${rect.right - calendarRect.left + buffer}px`; // Further to the right of the date
+  } else {
+    popupBox.style.left = `${rect.left - calendarRect.left - popupWidth - buffer}px`; // Left of the date if right space is insufficient
+  }
+
+  // Show popup box with transition
+  popupBox.classList.add('show');
+}
+
+// Close the popup box
+function closePopup() {
+  popupBox.classList.remove('show');
+  popupBox.style.left = ''; // Reset left positioning for next usage
+  popupBox.style.top = ''; // Reset top positioning for next usage
+}
+
+// Attach event listeners to meeting days
+function renderCalendar(month, year) {
+  const firstDayOfMonth = new Date(year, month, 1).getDay();
+  const daysInMonth = new Date(year, month + 1, 0).getDate();
+  calendarDays.innerHTML = '';
+
+  // Update month-year header
+  const options = { month: 'long', year: 'numeric' };
+  monthYear.textContent = new Date(year, month).toLocaleDateString('en-US', options);
+
+  // Render empty days for the first week
+  for (let i = 0; i < firstDayOfMonth; i++) {
+    const emptyDiv = document.createElement('div');
+    calendarDays.appendChild(emptyDiv);
+  }
+
+  // Render each day in the month
+  for (let day = 1; day <= daysInMonth; day++) {
+    const dayDiv = document.createElement('div');
+    dayDiv.classList.add('day', 'bg-gray-100', 'rounded-lg', 'p-2', 'text-gray-800');
+    dayDiv.textContent = day;
+
+    // Check if the day has a meeting
+    const meeting = meetings.find(m => 
+      m.date.getFullYear() === year &&
+      m.date.getMonth() === month &&
+      m.date.getDate() === day
+    );
+
+    if (meeting) {
+      dayDiv.classList.add('meeting-day');
+      
+      // Add tooltip
+      const tooltip = document.createElement('span');
+      tooltip.classList.add('tooltip');
+      tooltip.textContent = 'Click for details';
+      dayDiv.appendChild(tooltip);
+
+      // Add event listener to show details on click
+      dayDiv.addEventListener('click', () => showMeetingDetails(meeting, dayDiv));
+    }
+
+    calendarDays.appendChild(dayDiv);
+  }
+}
+
+// Month navigation
+document.getElementById('prev-month').addEventListener('click', () => {
+  displayedMonth--;
+  if (displayedMonth < 0) {
+    displayedMonth = 11;
+    displayedYear--;
+  }
+  renderCalendar(displayedMonth, displayedYear);
+});
+
+document.getElementById('next-month').addEventListener('click', () => {
+  displayedMonth++;
+  if (displayedMonth > 11) {
+    displayedMonth = 0;
+    displayedYear++;
+  }
+  renderCalendar(displayedMonth, displayedYear);
+});
+
+// Initial render
+renderCalendar(displayedMonth, displayedYear);
+
+  </script>
+
+</body>
+</html>
