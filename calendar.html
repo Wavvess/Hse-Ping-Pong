@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,144 +8,149 @@
   <!-- Include Tailwind CSS from CDN -->
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
   <style>
-/* Date Styles */
-.day {
-  position: relative;
-  padding: 12px;
-  background-color: #f3f4f6; /* Soft gray background */
-  border-radius: 8px;
-  font-size: 1rem;
-  color: #333;
-  cursor: pointer;
-  transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
-}
+    /* Date Styles */
+    .day {
+      position: relative;
+      padding: 12px;
+      background-color: #f3f4f6;
+      /* Soft gray background */
+      border-radius: 8px;
+      font-size: 1rem;
+      color: #333;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    }
 
-.day:hover {
-  background-color: #2563eb;
-  color: #ffffff;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3); /* Blue box shadow on hover */
-}
+    .day:hover {
+      background-color: #2563eb;
+      color: #ffffff;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3);
+      /* Blue box shadow on hover */
+    }
 
-/* Meeting Day Styles */
-.meeting-day {
-  background-color: #2563eb;
-  color: white;
-}
+    /* Meeting Day Styles */
+    .meeting-day {
+      background-color: #2563eb;
+      color: white;
+    }
 
-/* Tooltip Styling (if applicable) */
-.day .tooltip {
-  /* Existing tooltip styles */
-}
+    /* Tooltip Styling */
+    .day {
+      position: relative;
+    }
 
-    /* Enhanced Popup Box Styles */
-/* Tooltip Styling */
-.day {
-  position: relative;
-}
+    .day .tooltip {
+      display: none;
+      position: absolute;
+      bottom: 110%;
+      /* Position tooltip just above the date */
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: rgba(37, 99, 235, 0.85);
+      /* Slightly translucent blue */
+      color: white;
+      padding: 2px 6px;
+      /* Smaller padding for a compact look */
+      border-radius: 4px;
+      font-size: 0.65rem;
+      /* Smaller font size */
+      white-space: nowrap;
+      opacity: 0;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+      z-index: 1;
+    }
 
-.day .tooltip {
-  display: none;
-  position: absolute;
-  bottom: 110%; /* Position tooltip just above the date */
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: rgba(37, 99, 235, 0.85); /* Slightly translucent blue */
-  color: white;
-  padding: 2px 6px; /* Smaller padding for a compact look */
-  border-radius: 4px;
-  font-size: 0.65rem; /* Smaller font size */
-  white-space: nowrap;
-  opacity: 0;
-  transition: opacity 0.2s ease, transform 0.2s ease;
-  z-index: 1;
-}
-
-.day:hover .tooltip {
-  display: block;
-  opacity: 1;
-  transform: translateX(-50%) translateY(-2px); /* Small lift effect */
-}
+    .day:hover .tooltip {
+      display: block;
+      opacity: 1;
+      transform: translateX(-50%) translateY(-2px);
+      /* Small lift effect */
+    }
 
 
-/* Popup Box Styling */
-.popup-box {
-  display: none;
-  position: absolute;
-  width: 220px;
-  padding: 1.5rem;
-  background: rgba(255, 255, 255, 0.9);
-  border-radius: 12px;
-  backdrop-filter: blur(10px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-  z-index: 10;
-  text-align: left;
-  opacity: 0;
-  transform: translateX(20px); /* Starts off slightly to the right */
-  transition: transform 0.3s ease, opacity 0.3s ease;
-}
+    /* Popup Box Styling */
+    .popup-box {
+      display: none;
+      position: absolute;
+      width: 220px;
+      padding: 1.5rem;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 12px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+      z-index: 10;
+      text-align: left;
+      opacity: 0;
+      transform: translateX(20px);
+      /* Starts off slightly to the right */
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
 
-.popup-box.show {
-  display: block;
-  opacity: 1;
-}
+    .popup-box.show {
+      display: block;
+      opacity: 1;
+    }
 
-/* Tooltip styling */
-.day {
-  position: relative;
-}
+    /* Tooltip styling */
+    .day {
+      position: relative;
+    }
 
-.day .tooltip {
-  display: none;
-  position: absolute;
-  bottom: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: #2563eb;
-  color: white;
-  padding: 4px 8px;
-  border-radius: 4px;
-  font-size: 0.75rem;
-  white-space: nowrap;
-  opacity: 0;
-  transition: opacity 0.2s ease;
-  z-index: 1;
-}
+    .day .tooltip {
+      display: none;
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #2563eb;
+      color: white;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      white-space: nowrap;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+      z-index: 1;
+    }
 
-.day:hover .tooltip {
-  display: block;
-  opacity: 1;
-}
+    .day:hover .tooltip {
+      display: block;
+      opacity: 1;
+    }
 
-.popup-box {
-  /* Existing popup styles */
-  display: none;
-  position: absolute;
-  width: 250px;
-  padding: 1.5rem;
-  background: rgba(255, 255, 255, 0.9);
-  border-radius: 12px;
-  backdrop-filter: blur(10px);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
-  z-index: 10;
-  text-align: left;
-  opacity: 0;
-  transition: transform 0.3s ease, opacity 0.3s ease;
-}
-.popup-box.show {
-  display: block;
-  opacity: 1;
-}
+    .popup-box {
+      /* Existing popup styles */
+      display: none;
+      position: absolute;
+      width: 250px;
+      padding: 1.5rem;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 12px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+      z-index: 10;
+      text-align: left;
+      opacity: 0;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .popup-box.show {
+      display: block;
+      opacity: 1;
+    }
 
 
     .popup-box.show {
       display: block;
       opacity: 1;
-      transform: translateX(0); /* Slide into view */
+      transform: translateX(0);
+      /* Slide into view */
     }
 
     .popup-box.left {
-      transform: translateX(-20px); /* Slide in from the left */
+      transform: translateX(-20px);
+      /* Slide in from the left */
     }
 
     #popup-date {
@@ -177,6 +183,7 @@
     }
   </style>
 </head>
+
 <body class="bg-gray-50 h-screen flex items-center justify-center relative">
 
   <!-- Calendar Container -->
@@ -240,117 +247,118 @@
     let displayedMonth = currentDate.getMonth();
     let displayedYear = currentDate.getFullYear();
 
-// Elements for the popup box
-const popupBox = document.getElementById('popup-box');
-const popupDate = document.getElementById('popup-date');
-const popupDetails = document.getElementById('popup-details');
+    // Elements for the popup box
+    const popupBox = document.getElementById('popup-box');
+    const popupDate = document.getElementById('popup-date');
+    const popupDetails = document.getElementById('popup-details');
 
-// Function to show meeting details in the popup box
-function showMeetingDetails(meeting, dayElement) {
-  const options = { month: 'long', day: 'numeric', year: 'numeric' };
-  popupDate.textContent = meeting.date.toLocaleDateString('en-US', options);
-  popupDetails.textContent = meeting.details;
+    // Function to show meeting details in the popup box
+    function showMeetingDetails(meeting, dayElement) {
+      const options = { month: 'long', day: 'numeric', year: 'numeric' };
+      popupDate.textContent = meeting.date.toLocaleDateString('en-US', options);
+      popupDetails.textContent = meeting.details;
 
-  // Remove tooltip if present
-  const tooltip = dayElement.querySelector('.tooltip');
-  if (tooltip) tooltip.remove();
+      // Remove tooltip if present
+      const tooltip = dayElement.querySelector('.tooltip');
+      if (tooltip) tooltip.remove();
 
-  // Get position of the clicked day element within the calendar
-  const rect = dayElement.getBoundingClientRect();
-  const calendarRect = calendarDays.getBoundingClientRect();
-  const popupWidth = popupBox.offsetWidth;
-  const buffer = 40; // Increased spacing between date and popup box
+      // Get position of the clicked day element within the calendar
+      const rect = dayElement.getBoundingClientRect();
+      const calendarRect = calendarDays.getBoundingClientRect();
+      const popupWidth = popupBox.offsetWidth;
+      const buffer = 40; // Increased spacing between date and popup box
 
-  // Set top position relative to the clicked date
-  popupBox.style.top = `${rect.top - calendarRect.top + window.scrollY + rect.height / 2}px`;
+      // Set top position relative to the clicked date
+      popupBox.style.top = `${rect.top - calendarRect.top + window.scrollY + rect.height / 2}px`;
 
-  // Adjust left or right of the date based on space available
-  if (rect.left + popupWidth + buffer < calendarRect.right) {
-    popupBox.style.left = `${rect.right - calendarRect.left + buffer}px`; // Further to the right of the date
-  } else {
-    popupBox.style.left = `${rect.left - calendarRect.left - popupWidth - buffer}px`; // Left of the date if right space is insufficient
-  }
+      // Adjust left or right of the date based on space available
+      if (rect.left + popupWidth + buffer < calendarRect.right) {
+        popupBox.style.left = `${rect.right - calendarRect.left + buffer}px`; // Further to the right of the date
+      } else {
+        popupBox.style.left = `${rect.left - calendarRect.left - popupWidth - buffer}px`; // Left of the date if right space is insufficient
+      }
 
-  // Show popup box with transition
-  popupBox.classList.add('show');
-}
-
-// Close the popup box
-function closePopup() {
-  popupBox.classList.remove('show');
-  popupBox.style.left = ''; // Reset left positioning for next usage
-  popupBox.style.top = ''; // Reset top positioning for next usage
-}
-
-// Attach event listeners to meeting days
-function renderCalendar(month, year) {
-  const firstDayOfMonth = new Date(year, month, 1).getDay();
-  const daysInMonth = new Date(year, month + 1, 0).getDate();
-  calendarDays.innerHTML = '';
-
-  // Update month-year header
-  const options = { month: 'long', year: 'numeric' };
-  monthYear.textContent = new Date(year, month).toLocaleDateString('en-US', options);
-
-  // Render empty days for the first week
-  for (let i = 0; i < firstDayOfMonth; i++) {
-    const emptyDiv = document.createElement('div');
-    calendarDays.appendChild(emptyDiv);
-  }
-
-  // Render each day in the month
-  for (let day = 1; day <= daysInMonth; day++) {
-    const dayDiv = document.createElement('div');
-    dayDiv.classList.add('day', 'bg-gray-100', 'rounded-lg', 'p-2', 'text-gray-800');
-    dayDiv.textContent = day;
-
-    // Check if the day has a meeting
-    const meeting = meetings.find(m => 
-      m.date.getFullYear() === year &&
-      m.date.getMonth() === month &&
-      m.date.getDate() === day
-    );
-
-    if (meeting) {
-      dayDiv.classList.add('meeting-day');
-      
-      // Add tooltip
-      const tooltip = document.createElement('span');
-      tooltip.classList.add('tooltip');
-      tooltip.textContent = 'Click for details';
-      dayDiv.appendChild(tooltip);
-
-      // Add event listener to show details on click
-      dayDiv.addEventListener('click', () => showMeetingDetails(meeting, dayDiv));
+      // Show popup box with transition
+      popupBox.classList.add('show');
     }
 
-    calendarDays.appendChild(dayDiv);
-  }
-}
+    // Close the popup box
+    function closePopup() {
+      popupBox.classList.remove('show');
+      popupBox.style.left = ''; // Reset left positioning for next usage
+      popupBox.style.top = ''; // Reset top positioning for next usage
+    }
 
-// Month navigation
-document.getElementById('prev-month').addEventListener('click', () => {
-  displayedMonth--;
-  if (displayedMonth < 0) {
-    displayedMonth = 11;
-    displayedYear--;
-  }
-  renderCalendar(displayedMonth, displayedYear);
-});
+    // Attach event listeners to meeting days
+    function renderCalendar(month, year) {
+      const firstDayOfMonth = new Date(year, month, 1).getDay();
+      const daysInMonth = new Date(year, month + 1, 0).getDate();
+      calendarDays.innerHTML = '';
 
-document.getElementById('next-month').addEventListener('click', () => {
-  displayedMonth++;
-  if (displayedMonth > 11) {
-    displayedMonth = 0;
-    displayedYear++;
-  }
-  renderCalendar(displayedMonth, displayedYear);
-});
+      // Update month-year header
+      const options = { month: 'long', year: 'numeric' };
+      monthYear.textContent = new Date(year, month).toLocaleDateString('en-US', options);
 
-// Initial render
-renderCalendar(displayedMonth, displayedYear);
+      // Render empty days for the first week
+      for (let i = 0; i < firstDayOfMonth; i++) {
+        const emptyDiv = document.createElement('div');
+        calendarDays.appendChild(emptyDiv);
+      }
+
+      // Render each day in the month
+      for (let day = 1; day <= daysInMonth; day++) {
+        const dayDiv = document.createElement('div');
+        dayDiv.classList.add('day', 'bg-gray-100', 'rounded-lg', 'p-2', 'text-gray-800');
+        dayDiv.textContent = day;
+
+        // Check if the day has a meeting
+        const meeting = meetings.find(m =>
+          m.date.getFullYear() === year &&
+          m.date.getMonth() === month &&
+          m.date.getDate() === day
+        );
+
+        if (meeting) {
+          dayDiv.classList.add('meeting-day');
+
+          // Add tooltip
+          const tooltip = document.createElement('span');
+          tooltip.classList.add('tooltip');
+          tooltip.textContent = 'Click for details';
+          dayDiv.appendChild(tooltip);
+
+          // Add event listener to show details on click
+          dayDiv.addEventListener('click', () => showMeetingDetails(meeting, dayDiv));
+        }
+
+        calendarDays.appendChild(dayDiv);
+      }
+    }
+
+    // Month navigation
+    document.getElementById('prev-month').addEventListener('click', () => {
+      displayedMonth--;
+      if (displayedMonth < 0) {
+        displayedMonth = 11;
+        displayedYear--;
+      }
+      renderCalendar(displayedMonth, displayedYear);
+    });
+
+    document.getElementById('next-month').addEventListener('click', () => {
+      displayedMonth++;
+      if (displayedMonth > 11) {
+        displayedMonth = 0;
+        displayedYear++;
+      }
+      renderCalendar(displayedMonth, displayedYear);
+    });
+
+    // Initial render
+    renderCalendar(displayedMonth, displayedYear);
 
   </script>
 
 </body>
+
 </html>
