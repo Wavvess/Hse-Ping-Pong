@@ -188,6 +188,13 @@
 /* Tablet screens and below (max-width: 768px) */
 @media (max-width: 768px) {
   /* Stretch Calendar Container */
+
+  .w-full.max-w-3xl {
+    margin-left: 1.5rem !important;
+    margin-right: 1.5rem !important;
+    box-sizing: border-box; /* Ensures padding doesn’t make the container too wide */
+  }
+
   .w-full.max-w-3xl {
     width: 100%;
     padding: 1rem;
@@ -246,15 +253,29 @@
 /* Base Styling (No changes to the original styling) */
 
 /* Mobile screens (max-width: 480px) */
-@media (max-width: 480px) {
-  /* Calendar Container: Increase padding and space */
+@media (max-width: 520px) {
+  /* Flex Container Adjustments */
+
   .w-full.max-w-3xl {
-    width: 100%;
-    padding: 2rem 1rem; /* More padding for better vertical space */
-    margin-top: 1rem; /* Add some top margin */
+    margin-left: 1.1rem !important;
+    margin-right: 1.1rem !important;
+    box-sizing: border-box;
   }
 
-  /* Back Button: Reposition to the top */
+  .flex.justify-between.items-center.mb-6 {
+    justify-content: center; /* Center-align the header */
+    flex-direction: column; /* Stack items vertically */
+    gap: 1rem; /* Add spacing between items if needed */
+  }
+
+  /* Center Header */
+  h1 {
+    font-size: 1.5rem; /* Adjust font size as needed */
+    text-align: center;
+    margin: 0; /* Remove extra margin */
+  }
+
+  /* Move Back Button to top */
   .back-button {
     position: fixed;
     top: 1rem;
@@ -266,47 +287,13 @@
     z-index: 10;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    transition: background 0.3s;
   }
 
-  .back-button:hover {
-    background-color: #1d4ed8;
-    scale: 1.05;
-  }
-
-  /* Header and Month-Year */
-  h1 {
-    font-size: 1.25rem;
-    margin-bottom: 1rem;
-    text-align: center; /* Center the title for a balanced look */
-  }
-
+  /* Adjust Month-Year Font Size */
   #month-year {
-    font-size: 1rem;
-    margin-top: 2rem; /* Space from fixed back button */
-  }
-
-  /* Grid Layout: Adjust cell spacing and size */
-  .grid-cols-7 {
-    gap: 6px;
-  }
-
-  /* Day Styles */
-  .day {
-    padding: 12px;
-    font-size: 0.85rem;
-    width: 100%;
-  }
-
-  /* Popup Box */
-  .popup-box {
-    width: 90%;
-    max-width: 260px;
-    padding: 1rem;
-    font-size: 0.9rem;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-    left: 50%;
-    transform: translateX(-50%) translateY(20px); /* Centered below date */
+    font-size: 1.15rem;
+    text-align: center;
+    margin-top: 1rem; /* Adjust spacing */
   }
 }
 
