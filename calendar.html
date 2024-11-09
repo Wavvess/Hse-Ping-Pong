@@ -179,8 +179,140 @@
     }
 
     .close-button:hover {
+      scale: 1.05;
       background-color: #1d4ed8;
     }
+
+/* Responsive Adjustments */
+
+/* Tablet screens and below (max-width: 768px) */
+@media (max-width: 768px) {
+  /* Stretch Calendar Container */
+  .w-full.max-w-3xl {
+    width: 100%;
+    padding: 1rem;
+  }
+
+  /* Header and Back Button */
+  .back-button {
+    font-size: 0.875rem;
+    padding: 0.5rem 1rem;
+    margin-bottom: 1rem; /* Add margin for better spacing */
+  }
+  
+  h1 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  #month-year {
+    font-size: 1.125rem;
+  }
+
+  /* Month Navigation Buttons */
+  #prev-month,
+  #next-month {
+    font-size: 1rem;
+    padding: 0.5rem;
+  }
+
+  /* Grid Layout */
+  .grid-cols-7 {
+    grid-template-columns: repeat(7, 1fr);
+    gap: 6px;
+  }
+
+  /* Day Styles */
+  .day {
+    padding: 10px;
+    font-size: 0.9rem;
+    width: 100%;
+  }
+
+  /* Popup Box */
+  .popup-box {
+    width: 90%;
+    max-width: 260px;
+    padding: 1rem;
+    font-size: 0.9rem;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    left: 50%;
+    transform: translateX(-50%) translateY(20px); /* Centered below date */
+  }
+}
+
+/* Small Mobile screens (max-width: 480px) */
+/* Mobile screens (max-width: 480px) */
+/* Base Styling (No changes to the original styling) */
+
+/* Mobile screens (max-width: 480px) */
+@media (max-width: 480px) {
+  /* Calendar Container: Increase padding and space */
+  .w-full.max-w-3xl {
+    width: 100%;
+    padding: 2rem 1rem; /* More padding for better vertical space */
+    margin-top: 1rem; /* Add some top margin */
+  }
+
+  /* Back Button: Reposition to the top */
+  .back-button {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    font-size: 0.75rem;
+    padding: 0.5rem;
+    background-color: #2563eb;
+    color: white;
+    z-index: 10;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s;
+  }
+
+  .back-button:hover {
+    background-color: #1d4ed8;
+    scale: 1.05;
+  }
+
+  /* Header and Month-Year */
+  h1 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    text-align: center; /* Center the title for a balanced look */
+  }
+
+  #month-year {
+    font-size: 1rem;
+    margin-top: 2rem; /* Space from fixed back button */
+  }
+
+  /* Grid Layout: Adjust cell spacing and size */
+  .grid-cols-7 {
+    gap: 6px;
+  }
+
+  /* Day Styles */
+  .day {
+    padding: 12px;
+    font-size: 0.85rem;
+    width: 100%;
+  }
+
+  /* Popup Box */
+  .popup-box {
+    width: 90%;
+    max-width: 260px;
+    padding: 1rem;
+    font-size: 0.9rem;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    left: 50%;
+    transform: translateX(-50%) translateY(20px); /* Centered below date */
+  }
+}
+
+
+
+
   </style>
 </head>
 
@@ -262,35 +394,49 @@
     const popupDate = document.getElementById('popup-date');
     const popupDetails = document.getElementById('popup-details');
 
-    // Function to show meeting details in the popup box
-    function showMeetingDetails(meeting, dayElement) {
-      const options = { month: 'long', day: 'numeric', year: 'numeric' };
-      popupDate.textContent = meeting.date.toLocaleDateString('en-US', options);
-      popupDetails.textContent = meeting.details;
+// Function to show meeting details in the popup box
+function showMeetingDetails(meeting, dayElement) {
+  const options = { month: 'long', day: 'numeric', year: 'numeric' };
+  popupDate.textContent = meeting.date.toLocaleDateString('en-US', options);
+  popupDetails.textContent = meeting.details;
 
-      // Remove tooltip if present
-      const tooltip = dayElement.querySelector('.tooltip');
-      if (tooltip) tooltip.remove();
+  // Get position of the clicked day element within the calendar
+  const rect = dayElement.getBoundingClientRect();
+  const calendarRect = calendarDays.getBoundingClientRect();
+  const popupWidth = popupBox.offsetWidth;
+  const buffer = 20; // spacing between date and popup box
 
-      // Get position of the clicked day element within the calendar
-      const rect = dayElement.getBoundingClientRect();
-      const calendarRect = calendarDays.getBoundingClientRect();
-      const popupWidth = popupBox.offsetWidth;
-      const buffer = 40; // Increased spacing between date and popup box
+  // Check if screen is smaller than or equal to 768px
+  if (window.matchMedia("(max-width: 768px)").matches) {
+    // Centered positioning for smaller screens
+    popupBox.style.top = `${rect.bottom - calendarRect.top + window.scrollY + 10}px`; // 10px below date
+    popupBox.style.left = `50%`; // Centered horizontally
+    popupBox.style.transform = `translateX(-50%)`; // Centered alignment
 
-      // Set top position relative to the clicked date
-      popupBox.style.top = `${rect.top - calendarRect.top + window.scrollY + rect.height / 2}px`;
+    // Remove tooltip on smaller screens
+    const tooltip = dayElement.querySelector('.tooltip');
+    if (tooltip) tooltip.style.display = 'none'; // Hide tooltip
+  } else {
+    // Position to the side for larger screens
+    popupBox.style.top = `${rect.top - calendarRect.top + window.scrollY + rect.height / 2}px`;
 
-      // Adjust left or right of the date based on space available
-      if (rect.left + popupWidth + buffer < calendarRect.right) {
-        popupBox.style.left = `${rect.right - calendarRect.left + buffer}px`; // Further to the right of the date
-      } else {
-        popupBox.style.left = `${rect.left - calendarRect.left - popupWidth - buffer}px`; // Left of the date if right space is insufficient
-      }
-
-      // Show popup box with transition
-      popupBox.classList.add('show');
+    // Adjust left or right of the date based on space available
+    if (rect.left + popupWidth + buffer < calendarRect.right) {
+      popupBox.style.left = `${rect.right - calendarRect.left + buffer}px`; // Right of the date
+    } else {
+      popupBox.style.left = `${rect.left - calendarRect.left - popupWidth - buffer}px`; // Left if right space is insufficient
     }
+
+    // Show tooltip again for larger screens (in case it was hidden on mobile)
+    const tooltip = dayElement.querySelector('.tooltip');
+    if (tooltip) tooltip.style.display = 'block'; // Show tooltip
+  }
+
+  // Show popup box with transition
+  popupBox.classList.add('show');
+}
+
+
 
     // Close the popup box
     function closePopup() {
