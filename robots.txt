@@ -1,0 +1,111 @@
+User-agent: bingbot
+Disallow: /downloads/
+Disallow: /nonsvn/
+Disallow: /webview/
+Disallow: /*/tag-*
+Disallow: /*?*q=
+Disallow: /*?*%2525*
+Allow: /
+
+User-agent: ia_archiver
+Disallow: /downloads/
+Disallow: /nonsvn/
+Disallow: /webview/
+Disallow: /*/tag-*
+Disallow: /*?*q=
+Disallow: /*?*%2525*
+Allow: /
+
+User-agent: Twitterbot
+Disallow: /downloads/
+Disallow: /nonsvn/
+Disallow: /webview/
+Disallow: /*/tag-*
+Disallow: /*?*q=
+Disallow: /*?*%2525*
+Allow: /
+
+User-agent: Yandex
+Disallow: /
+Allow: /tr/
+Allow: /istanbul*
+Allow: /ankara*
+Allow: /izmir*
+Allow: /çeşme*
+Allow: /bursa*
+Allow: /adana*
+Allow: /antalya*
+Allow: /izmit*
+Allow: /konya*
+Allow: /gaziantep*
+Allow: /bodrum*
+Allow: /eskisehir*
+Allow: /bozcaada*
+
+User-agent: SeznamBot
+Sitemap: https://www.zomato.com/sitemap_seznam.xml.gz
+Disallow: /downloads/
+Disallow: /nonsvn/
+Disallow: /webview/
+Disallow: /*/tag-*
+Disallow: /*?*q=
+Disallow: /*?*%2525*
+Allow: /
+
+User-agent: DuckDuckBot
+Disallow: /admin/
+Disallow: /clients/
+Disallow: /voicephp/
+Disallow: /downloads/
+Disallow: /nonsvn/
+Disallow: /pt/
+Disallow: /tr/
+Disallow: /pl/
+Disallow: /id/
+Disallow: /cs/
+Disallow: /sk/
+Disallow: /vi/
+Disallow: /it/
+Disallow: /es/
+Disallow: /webview/
+Disallow: /mydashboard
+Allow: /
+
+User-agent: AhrefsBot
+Disallow: /downloads/
+Disallow: /nonsvn/
+Disallow: /webview/
+Disallow: /*/tag-*
+Disallow: /*?*q=
+Disallow: /*?*%2525*
+Allow: /
+
+User-agent: Applebot
+Disallow: /downloads/
+Disallow: /nonsvn/
+Disallow: /webview/
+Disallow: /*/tag-*
+Disallow: /*?*q=
+Disallow: /*?*%2525*
+Allow: /
+
+User-agent: SearchmetricsBot
+Disallow: /downloads/
+Disallow: /nonsvn/
+Disallow: /webview/
+Disallow: /*/tag-*
+Disallow: /*?*q=
+Disallow: /*?*%2525*
+Allow: /
+
+User-agent: SEMrushBot
+Disallow: /downloads/
+Disallow: /nonsvn/
+Disallow: /webview/
+Disallow: /*/tag-*
+Disallow: /*?*q=
+Disallow: /*?*%2525*
+Allow: /
+
+User-agent: *
+Disallow: /
