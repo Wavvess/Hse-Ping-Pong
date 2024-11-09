@@ -155,3 +155,100 @@
         }
         
       }
+
+/* Instagram Card Styles */
+.instagram-card {
+    transition: 0.3s ease;
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb; /* Light gray border */
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.15);
+    cursor: pointer;
+  }
+  
+  .instagram-card:hover {
+    transform: translateY(-4px);
+     scale: 1.02;
+  }
+  
+  .instagram-card img,
+  .instagram-card video {
+    transition: filter 0.3s ease;
+    filter: grayscale(100%); /* Start in grayscale */
+  }
+  
+  .instagram-card img:hover,
+  .instagram-card video:hover {
+    filter: grayscale(0%); /* Return to color on hover */
+  }
+  
+  .instagram-card p {
+    color: #374151; /* Dark gray text */
+    font-family: 'Inter', sans-serif; /* Match your site's font */
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Limit caption to 3 lines */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .instagram-card a {
+    text-decoration: none;
+  }
+  
+  .instagram-card .p-4 {
+    background-color: #f9fafb; /* Light gray background for caption */
+  }
+  
+  .instagram-card:hover .p-4 {
+    background-color: #f3f4f6; /* Slightly darker on hover */
+  }
+  
+  .instagram-card:hover p {
+    color: #2563eb; /* Change text to blue on hover */
+  }
+  
+  /* Horizontal Scrollbar Styles */
+  #instagram-feed {
+    display: flex;
+    gap: 1.5rem; /* Equivalent to space-x-6 in Tailwind */
+    padding-bottom: 1rem;
+    overflow-x: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #2563eb #f1f1f1;
+  }
+  
+  #instagram-feed::-webkit-scrollbar {
+    height: 8px;
+  }
+  
+  #instagram-feed::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  #instagram-feed::-webkit-scrollbar-thumb {
+    background-color: #2563eb;
+    border-radius: 4px;
+    border: 1px solid #ffffff;
+  }
+  
+  /* Hide scrollbar on non-hover */
+  #instagram-feed::-webkit-scrollbar {
+    display: none;
+  }
+  
+  #instagram-feed:hover::-webkit-scrollbar {
+    display: block;
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    .instagram-card {
+      width: 80%;
+    }
+  }
+  
+  @media (max-width: 640px) {
+    .instagram-card {
+      width: 100%;
+    }
+  }
+  
