@@ -1,0 +1,157 @@
+    /* Previous scrollbar styles remain */
+    ::-webkit-scrollbar {
+        width: 8px;
+      }
+  
+      ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 4px;
+      }
+  
+      ::-webkit-scrollbar-thumb {
+        background: #2563eb;
+        border-radius: 4px;
+        transition: background 0.2s;
+      }
+  
+      ::-webkit-scrollbar-thumb:hover {
+        background: #1d4ed8;
+      }
+  
+      * {
+        scrollbar-width: thin;
+        scrollbar-color: #2563eb #f1f1f1;
+      }
+  
+      html {
+        scroll-behavior: smooth;
+      }
+  
+      /* New Button Hover Effects */
+      .primary-button {
+        position: relative;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        transform: translateY(0);
+        background: white;
+      }
+  
+      .primary-button:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(37, 99, 235, 0.1);
+        opacity: 0;
+        transition: opacity 0.5s ease;
+      }
+  
+      .primary-button {
+        position: relative;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        transform: translateY(0);
+        background: white;
+      }
+  
+      .primary-button:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(37, 99, 235, 0.1);
+        opacity: 0;
+        transition: opacity 0.5s ease;
+      }
+  
+      .primary-button:hover {
+        transform: translateY(-2px) scale(1.02);
+        /* Stronger blue glow with higher spread and opacity */
+        box-shadow: 0 4px 15px rgba(37, 99, 235, 0.2), 0 0 15px 5px rgba(37, 99, 235, 0.6);
+      }
+  
+      .primary-button:hover:before {
+        opacity: 1;
+      }
+  
+      .secondary-button {
+        position: relative;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        transform: translateY(0);
+      }
+  
+      .secondary-button:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.2);
+        opacity: 0;
+        transition: opacity 0.5s ease;
+      }
+  
+      .secondary-button:hover {
+        transform: translateY(-2px) scale(1.02);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15), 0 0 8px rgba(255, 255, 255, 0.5);
+      }
+  
+      .secondary-button:hover:before {
+        opacity: 1;
+      }
+  
+  
+  
+      .feature-card {
+        transition: all 0.3s ease;
+      }
+  
+      .feature-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 20px rgba(37, 99, 235, 0.15);
+      }
+  
+      .feature-card:hover svg {
+        transform: scale(1.1);
+        color: #1d4ed8;
+      }
+  
+      .feature-card svg {
+        transition: all 0.3s ease;
+      }
+  
+      .team-section {
+        filter: grayscale(100%);
+        transition: filter 0.3s ease;
+      }
+  
+      .team-section:hover{
+        filter: grayscale(0%);
+      }
+  
+      .team-cards{
+        transition: 0.3s ease;
+      }
+      
+      .team-cards:hover{
+        scale:1.01;
+        box-shadow: 3px 4px 14px 0px rgba(0,0,0,0.2);
+      }
+  
+      @media(max-width: 768px){
+        .team-cards img{
+          transition: none !important;
+        }
+        .team-cards img:hover{
+          filter: grayscale(100%) !important;
+          scale: 1.00 !important;
+          /* box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1) !important; */
+        }
+        
+      }
