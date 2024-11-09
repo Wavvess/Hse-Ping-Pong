@@ -1,3 +1,5 @@
+// this file is for index.html
+
 async function fetchInstagramPosts() {
     try {
       const response = await fetch('/get-instagram-posts');  // Call your backend server to fetch posts
