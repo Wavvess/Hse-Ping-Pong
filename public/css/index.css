@@ -1,254 +1,332 @@
-    /* Previous scrollbar styles remain */
-    ::-webkit-scrollbar {
-        width: 8px;
-      }
-  
-      ::-webkit-scrollbar-track {
-        background: #f1f1f1;
-        border-radius: 4px;
-      }
-  
-      ::-webkit-scrollbar-thumb {
-        background: #2563eb;
-        border-radius: 4px;
-        transition: background 0.2s;
-      }
-  
-      ::-webkit-scrollbar-thumb:hover {
-        background: #1d4ed8;
-      }
-  
-      * {
-        scrollbar-width: thin;
-        scrollbar-color: #2563eb #f1f1f1;
-      }
-  
-      html {
-        scroll-behavior: smooth;
-      }
-  
-      /* New Button Hover Effects */
-      .primary-button {
-        position: relative;
-        overflow: hidden;
-        transition: all 0.3s ease;
-        transform: translateY(0);
-        background: white;
-      }
-  
-      .primary-button:before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(37, 99, 235, 0.1);
-        opacity: 0;
-        transition: opacity 0.5s ease;
-      }
-  
-      .primary-button {
-        position: relative;
-        overflow: hidden;
-        transition: all 0.3s ease;
-        transform: translateY(0);
-        background: white;
-      }
-  
-      .primary-button:before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(37, 99, 235, 0.1);
-        opacity: 0;
-        transition: opacity 0.5s ease;
-      }
-  
-      .primary-button:hover {
-        transform: translateY(-2px) scale(1.02);
-        /* Stronger blue glow with higher spread and opacity */
-        box-shadow: 0 4px 15px rgba(37, 99, 235, 0.2), 0 0 15px 5px rgba(37, 99, 235, 0.6);
-      }
-  
-      .primary-button:hover:before {
-        opacity: 1;
-      }
-  
-      .secondary-button {
-        position: relative;
-        overflow: hidden;
-        transition: all 0.3s ease;
-        transform: translateY(0);
-      }
-  
-      .secondary-button:before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(255, 255, 255, 0.2);
-        opacity: 0;
-        transition: opacity 0.5s ease;
-      }
-  
-      .secondary-button:hover {
-        transform: translateY(-2px) scale(1.02);
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15), 0 0 8px rgba(255, 255, 255, 0.5);
-      }
-  
-      .secondary-button:hover:before {
-        opacity: 1;
-      }
-  
-  
-  
-      .feature-card {
-        transition: all 0.3s ease;
-      }
-  
-      .feature-card:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 8px 20px rgba(37, 99, 235, 0.15);
-      }
-  
-      .feature-card:hover svg {
-        transform: scale(1.1);
-        color: #1d4ed8;
-      }
-  
-      .feature-card svg {
-        transition: all 0.3s ease;
-      }
-  
-      .team-section {
-        filter: grayscale(100%);
-        transition: filter 0.3s ease;
-      }
-  
-      .team-section:hover{
-        filter: grayscale(0%);
-      }
-  
-      .team-cards{
-        transition: 0.3s ease;
-      }
-      
-      .team-cards:hover{
-        scale:1.01;
-        box-shadow: 3px 4px 14px 0px rgba(0,0,0,0.2);
-      }
-  
-      @media(max-width: 768px){
-        .team-cards img{
-          transition: none !important;
-        }
-        .team-cards img:hover{
-          filter: grayscale(100%) !important;
-          scale: 1.00 !important;
-          /* box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1) !important; */
-        }
-        
-      }
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&family=Open+Sans:wght@400;600&display=swap');
+
+
+/* Previous scrollbar styles remain */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #2563eb;
+    border-radius: 4px;
+    transition: background 0.2s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #1d4ed8;
+}
+
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #2563eb #f1f1f1;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* New Button Hover Effects */
+.primary-button {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    transform: translateY(0);
+    background: white;
+}
+
+.primary-button:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(37, 99, 235, 0.1);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.primary-button {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    transform: translateY(0);
+    background: white;
+}
+
+.primary-button:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(37, 99, 235, 0.1);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.primary-button:hover {
+    transform: translateY(-2px) scale(1.02);
+    /* Stronger blue glow with higher spread and opacity */
+    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.2), 0 0 15px 5px rgba(37, 99, 235, 0.6);
+}
+
+.primary-button:hover:before {
+    opacity: 1;
+}
+
+.secondary-button {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    transform: translateY(0);
+}
+
+.secondary-button:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.secondary-button:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15), 0 0 8px rgba(255, 255, 255, 0.5);
+}
+
+.secondary-button:hover:before {
+    opacity: 1;
+}
+
+
+
+.feature-card {
+    transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.15);
+}
+
+.feature-card:hover svg {
+    transform: scale(1.1);
+    color: #1d4ed8;
+}
+
+.feature-card svg {
+    transition: all 0.3s ease;
+}
+
+.team-section {
+    filter: grayscale(100%);
+    transition: filter 0.3s ease;
+}
+
+.team-section:hover {
+    filter: grayscale(0%);
+}
+
+.team-cards {
+    transition: 0.3s ease;
+}
+
+.team-cards:hover {
+    scale: 1.01;
+    box-shadow: 3px 4px 14px 0px rgba(0, 0, 0, 0.2);
+}
+
+@media(max-width: 768px) {
+    .team-cards img {
+        transition: none !important;
+    }
+
+    .team-cards img:hover {
+        filter: grayscale(100%) !important;
+        scale: 1.00 !important;
+        /* box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1) !important; */
+    }
+
+}
 
 /* Instagram Card Styles */
+
+.latest-box {
+    margin-bottom: 20px;
+}
+
+.blue-text-shadow {
+    text-shadow: 1px 1px 4px rgba(37, 99, 235, 0.5);
+    /* Light blue shadow */
+}
+
 .instagram-card {
-    transition: 0.3s ease;
-    background-color: #ffffff;
-    border: 1px solid #e5e7eb; /* Light gray border */
+    width: 300px;
+    /* Fixed width for the card */
+    height: 400px;
+    /* Fixed height */
+    background: linear-gradient(145deg, #ffffff, #f3f4f6);
+    /* Subtle gradient for background */
+    border: 1px solid #e5e7eb;
+    /* Light gray border */
+    border-radius: 12px;
+    /* Rounded corners for a modern look */
     box-shadow: 0 8px 20px rgba(37, 99, 235, 0.15);
+    /* Initial shadow */
     cursor: pointer;
-  }
-  
-  .instagram-card:hover {
-    transform: translateY(-4px);
-     scale: 1.02;
-  }
-  
-  .instagram-card img,
-  .instagram-card video {
-    transition: filter 0.3s ease;
-    filter: grayscale(100%); /* Start in grayscale */
-  }
-  
-  .instagram-card img:hover,
-  .instagram-card video:hover {
-    filter: grayscale(0%); /* Return to color on hover */
-  }
-  
-  .instagram-card p {
-    color: #374151; /* Dark gray text */
-    font-family: 'Inter', sans-serif; /* Match your site's font */
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    /* Hide overflow for rounded corners */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.instagram-card:hover {
+    transform: translateY(-4px) scale(1.01);
+    /* Lift and slight scale on hover */
+    box-shadow: 0 12px 35px rgba(37, 99, 235, 0.2), 0 0 15px rgba(37, 99, 235, 0.4);
+    /* Stronger shadow on hover */
+}
+
+.instagram-card img,
+.instagram-card video {
+    width: 100%;
+    /* Ensure media fills card width */
+    height: 300px;
+    /* Fixed height for images or videos */
+    object-fit: cover;
+    /* Crop to fit container */
+    border-top-left-radius: 12px;
+    /* Match card radius */
+    border-top-right-radius: 12px;
+    transition: transform 0.3s ease;
+}
+
+.instagram-card:hover img {
+    transform: scale(1.05);
+    /* Slight zoom effect on image hover */
+}
+
+.instagram-card p {
+    margin: 0;
+    color: #374151;
+    /* Dark gray text */
+    font-family: 'Inter', sans-serif;
+    /* Match your site's font */
     display: -webkit-box;
-    -webkit-line-clamp: 3; /* Limit caption to 3 lines */
+    line-clamp: 3;
+    -webkit-line-clamp: 3;
+    /* Limit caption to 3 lines */
     -webkit-box-orient: vertical;
     overflow: hidden;
-  }
-  
-  .instagram-card a {
+    text-overflow: ellipsis;
+}
+
+.instagram-card a {
     text-decoration: none;
-  }
-  
-  .instagram-card .p-4 {
-    background-color: #f9fafb; /* Light gray background for caption */
-  }
-  
-  .instagram-card:hover .p-4 {
-    background-color: #f3f4f6; /* Slightly darker on hover */
-  }
-  
-  .instagram-card:hover p {
-    color: #2563eb; /* Change text to blue on hover */
-  }
-  
-  /* Horizontal Scrollbar Styles */
-  #instagram-feed {
+}
+
+.instagram-card .p-4 {
+    background: linear-gradient(180deg, #ffffff, #f9fafb);
+    /* Subtle gradient */
+    padding: 1rem;
+    flex-grow: 1;
     display: flex;
-    gap: 1.5rem; /* Equivalent to space-x-6 in Tailwind */
-    padding-bottom: 1rem;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
+
+/* Text Styling */
+.instagram-card p {
+    margin: 0;
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: #4a5568;
+    /* Softer gray color */
+    font-family: 'Roboto', sans-serif;
+    /* Use Roboto or another modern font */
+    line-height: 1.5;
+    letter-spacing: 0.02em;
+    /* Slightly spaced letters for readability */
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    /* Soft shadow for depth */
+    transition: color 0.3s ease;
+    /* Smooth color transition on hover */
+}
+
+/* Hover Effect */
+.instagram-card:hover p {
+    color: #1d4ed8;
+    /* Light blue on hover */
+    font-weight: 500;
+    /* Slightly bolder on hover */
+}
+
+/* Horizontal Scrollbar Styles */
+#instagram-feed {
+    display: flex;
+    gap: 1.5rem;
+    /* Equivalent to space-x-6 in Tailwind */
+    padding-bottom: 3rem;
+    padding-inline: 1.5rem;
+    padding-top: 1rem;
     overflow-x: auto;
     scrollbar-width: thin;
     scrollbar-color: #2563eb #f1f1f1;
-  }
-  
-  #instagram-feed::-webkit-scrollbar {
+}
+
+#instagram-feed::-webkit-scrollbar {
     height: 8px;
-  }
-  
-  #instagram-feed::-webkit-scrollbar-track {
+}
+
+#instagram-feed::-webkit-scrollbar-track {
     background: #f1f1f1;
-  }
-  
-  #instagram-feed::-webkit-scrollbar-thumb {
+}
+
+#instagram-feed::-webkit-scrollbar-thumb {
     background-color: #2563eb;
     border-radius: 4px;
     border: 1px solid #ffffff;
-  }
-  
-  /* Hide scrollbar on non-hover */
-  #instagram-feed::-webkit-scrollbar {
+}
+
+#instagram-feed::-webkit-scrollbar-button {
     display: none;
-  }
-  
-  #instagram-feed:hover::-webkit-scrollbar {
+}
+
+/* Hide scrollbar on non-hover */
+#instagram-feed::-webkit-scrollbar {
+    display: none;
+}
+
+#instagram-feed:hover::-webkit-scrollbar {
     display: block;
-  }
-  
-  /* Responsive Adjustments */
-  @media (max-width: 768px) {
+}
+
+/* Remove Responsive Adjustments */
+@media (max-width: 768px) {
     .instagram-card {
-      width: 80%;
+        width: 300px;
+        /* Maintain fixed width */
     }
-  }
-  
-  @media (max-width: 640px) {
+}
+
+@media (max-width: 640px) {
     .instagram-card {
-      width: 100%;
+        width: 300px;
+        /* Maintain fixed width */
     }
-  }
-  
+}

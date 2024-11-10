@@ -1,296 +1,302 @@
     /* Date Styles */
 
-    body{
-        overflow-x: hidden;
-      }
-      .day {
-        position: relative;
-        padding: 12px;
-        background-color: #f3f4f6;
-        /* Soft gray background */
-        border-radius: 8px;
-        font-size: 1rem;
-        color: #333;
-        cursor: pointer;
-        transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
-      }
-  
-      .day:hover {
-        background-color: #2563eb;
-        color: #ffffff;
-        transform: translateY(-2px);
-        box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3);
-        /* Blue box shadow on hover */
-      }
-  
-      /* Meeting Day Styles */
-      .meeting-day {
-        background-color: #2563eb;
-        color: white;
-      }
-  
-      /* Tooltip Styling */
-      .day {
-        position: relative;
-      }
-  
-      .day .tooltip {
-        display: none;
-        position: absolute;
-        bottom: 110%;
-        /* Position tooltip just above the date */
-        left: 50%;
-        transform: translateX(-50%);
-        background-color: rgba(37, 99, 235, 0.85);
-        /* Slightly translucent blue */
-        color: white;
-        padding: 2px 6px;
-        /* Smaller padding for a compact look */
-        border-radius: 4px;
-        font-size: 0.65rem;
-        /* Smaller font size */
-        white-space: nowrap;
-        opacity: 0;
-        transition: opacity 0.2s ease, transform 0.2s ease;
-        z-index: 1;
-      }
-  
-      .day:hover .tooltip {
-        display: block;
-        opacity: 1;
-        transform: translateX(-50%) translateY(-2px);
-        /* Small lift effect */
-      }
-  
-  
-      /* Popup Box Styling */
-      .popup-box {
-        display: none;
-        position: absolute;
-        width: 220px;
-        padding: 1.5rem;
-        background: rgba(255, 255, 255, 0.9);
-        border-radius: 12px;
-        backdrop-filter: blur(10px);
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-        z-index: 10;
-        text-align: left;
-        opacity: 0;
-        transform: translateX(20px);
-        /* Starts off slightly to the right */
-        transition: transform 0.3s ease, opacity 0.3s ease;
-      }
-  
-      .popup-box.show {
-        display: block;
-        opacity: 1;
-      }
-  
-      /* Tooltip styling */
-      .day {
-        position: relative;
-      }
-  
-      .day .tooltip {
-        display: none;
-        position: absolute;
-        bottom: 100%;
-        left: 50%;
-        transform: translateX(-50%);
-        background-color: #2563eb;
-        color: white;
-        padding: 4px 8px;
-        border-radius: 4px;
-        font-size: 0.75rem;
-        white-space: nowrap;
-        opacity: 0;
-        transition: opacity 0.2s ease;
-        z-index: 1;
-      }
-  
-      .day:hover .tooltip {
-        display: block;
-        opacity: 1;
-      }
-  
-      .popup-box {
-        /* Existing popup styles */
-        display: none;
-        position: absolute;
-        width: 250px;
-        padding: 1.5rem;
-        background: rgba(255, 255, 255, 0.9);
-        border-radius: 12px;
-        backdrop-filter: blur(10px);
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
-        z-index: 10;
-        text-align: left;
-        opacity: 0;
-        transition: transform 0.3s ease, opacity 0.3s ease;
-      }
-  
-      .popup-box.show {
-        display: block;
-        opacity: 1;
-      }
-  
-  
-      .popup-box.show {
-        display: block;
-        opacity: 1;
-        transform: translateX(0);
-        /* Slide into view */
-      }
-  
-      .popup-box.left {
-        transform: translateX(-20px);
-        /* Slide in from the left */
-      }
-  
-      #popup-date {
-        font-size: 1.2rem;
-        color: #1d4ed8;
-        font-weight: bold;
-        margin-bottom: 0.5rem;
-      }
-  
-      #popup-details {
-        font-size: 1rem;
-        color: #4b5563;
-      }
-  
-      .close-button {
-        display: block;
-        margin-top: 1.5rem;
-        padding: 0.5rem 1rem;
-        background-color: #2563eb;
-        color: white;
-        text-align: center;
-        font-weight: bold;
-        border-radius: 8px;
-        cursor: pointer;
-        transition: background 0.3s;
-      }
-  
-      .close-button:hover {
-        scale: 1.05;
-        background-color: #1d4ed8;
-      }
-  
-  /* Responsive Adjustments */
-  
-  /* Tablet screens and below (max-width: 768px) */
-  @media (max-width: 768px) {
-    /* Stretch Calendar Container */
-  
-    .w-full.max-w-3xl {
-      margin-left: 1.5rem !important;
-      margin-right: 1.5rem !important;
-      box-sizing: border-box; /* Ensures padding doesn’t make the container too wide */
+    body {
+      overflow-x: hidden;
     }
-  
-    .w-full.max-w-3xl {
-      width: 100%;
-      padding: 1rem;
-    }
-  
-    /* Header and Back Button */
-    .back-button {
-      font-size: 0.875rem;
-      padding: 0.5rem 1rem;
-      margin-bottom: 1rem; /* Add margin for better spacing */
-    }
-    
-    h1 {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-    }
-  
-    #month-year {
-      font-size: 1.125rem;
-    }
-  
-    /* Month Navigation Buttons */
-    #prev-month,
-    #next-month {
-      font-size: 1rem;
-      padding: 0.5rem;
-    }
-  
-    /* Grid Layout */
-    .grid-cols-7 {
-      grid-template-columns: repeat(7, 1fr);
-      gap: 6px;
-    }
-  
-    /* Day Styles */
+
     .day {
-      padding: 10px;
-      font-size: 0.9rem;
-      width: 100%;
+      position: relative;
+      padding: 12px;
+      background-color: #f3f4f6;
+      /* Soft gray background */
+      border-radius: 8px;
+      font-size: 1rem;
+      color: #333;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
     }
-  
-    /* Popup Box */
-    .popup-box {
-      width: 90%;
-      max-width: 260px;
-      padding: 1rem;
-      font-size: 0.9rem;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-      left: 50%;
-      transform: translateX(-50%) translateY(20px); /* Centered below date */
+
+    .day:hover {
+      background-color: #2563eb;
+      color: #ffffff;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3);
+      /* Blue box shadow on hover */
     }
-  }
-  
-  /* Small Mobile screens (max-width: 480px) */
-  /* Mobile screens (max-width: 480px) */
-  /* Base Styling (No changes to the original styling) */
-  
-  /* Mobile screens (max-width: 480px) */
-  @media (max-width: 520px) {
-    /* Flex Container Adjustments */
-  
-    .w-full.max-w-3xl {
-      margin-left: 1.1rem !important;
-      margin-right: 1.1rem !important;
-      box-sizing: border-box;
-    }
-  
-    .flex.justify-between.items-center.mb-6 {
-      justify-content: center; /* Center-align the header */
-      flex-direction: column; /* Stack items vertically */
-      gap: 1rem; /* Add spacing between items if needed */
-    }
-  
-    /* Center Header */
-    h1 {
-      font-size: 1.5rem; /* Adjust font size as needed */
-      text-align: center;
-      margin: 0; /* Remove extra margin */
-    }
-  
-    /* Move Back Button to top */
-    .back-button {
-      position: fixed;
-      top: 1rem;
-      left: 1rem;
-      font-size: 0.75rem;
-      padding: 0.5rem;
+
+    /* Meeting Day Styles */
+    .meeting-day {
       background-color: #2563eb;
       color: white;
+    }
+
+    /* Tooltip Styling */
+    .day {
+      position: relative;
+    }
+
+    .day .tooltip {
+      display: none;
+      position: absolute;
+      bottom: 110%;
+      /* Position tooltip just above the date */
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: rgba(37, 99, 235, 0.85);
+      /* Slightly translucent blue */
+      color: white;
+      padding: 2px 6px;
+      /* Smaller padding for a compact look */
+      border-radius: 4px;
+      font-size: 0.65rem;
+      /* Smaller font size */
+      white-space: nowrap;
+      opacity: 0;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+      z-index: 1;
+    }
+
+    .day:hover .tooltip {
+      display: block;
+      opacity: 1;
+      transform: translateX(-50%) translateY(-2px);
+      /* Small lift effect */
+    }
+
+
+    /* Popup Box Styling */
+    .popup-box {
+      display: none;
+      position: absolute;
+      width: 220px;
+      padding: 1.5rem;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 12px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
       z-index: 10;
-      border-radius: 8px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      text-align: left;
+      opacity: 0;
+      transform: translateX(20px);
+      /* Starts off slightly to the right */
+      transition: transform 0.3s ease, opacity 0.3s ease;
     }
-  
-    /* Adjust Month-Year Font Size */
-    #month-year {
-      font-size: 1.15rem;
+
+    .popup-box.show {
+      display: block;
+      opacity: 1;
+    }
+
+    /* Tooltip styling */
+    .day {
+      position: relative;
+    }
+
+    .day .tooltip {
+      display: none;
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #2563eb;
+      color: white;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      white-space: nowrap;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+      z-index: 1;
+    }
+
+    .day:hover .tooltip {
+      display: block;
+      opacity: 1;
+    }
+
+    .popup-box {
+      /* Existing popup styles */
+      display: none;
+      position: absolute;
+      width: 250px;
+      padding: 1.5rem;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 12px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+      z-index: 10;
+      text-align: left;
+      opacity: 0;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .popup-box.show {
+      display: block;
+      opacity: 1;
+    }
+
+
+    .popup-box.show {
+      display: block;
+      opacity: 1;
+      transform: translateX(0);
+      /* Slide into view */
+    }
+
+    .popup-box.left {
+      transform: translateX(-20px);
+      /* Slide in from the left */
+    }
+
+    #popup-date {
+      font-size: 1.2rem;
+      color: #1d4ed8;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+
+    #popup-details {
+      font-size: 1rem;
+      color: #4b5563;
+    }
+
+    .close-button {
+      display: block;
+      margin-top: 1.5rem;
+      padding: 0.5rem 1rem;
+      background-color: #2563eb;
+      color: white;
       text-align: center;
-      margin-top: 1rem; /* Adjust spacing */
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
     }
-  }
-  
-  
-  
-  
+
+    .close-button:hover {
+      scale: 1.05;
+      background-color: #1d4ed8;
+    }
+
+    /* Responsive Adjustments */
+
+    /* Tablet screens and below (max-width: 768px) */
+    @media (max-width: 768px) {
+      /* Stretch Calendar Container */
+
+      .w-full.max-w-3xl {
+        margin-left: 1.5rem !important;
+        margin-right: 1.5rem !important;
+        box-sizing: border-box;
+        /* Ensures padding doesn’t make the container too wide */
+      }
+
+      .w-full.max-w-3xl {
+        width: 100%;
+        padding: 1rem;
+      }
+
+      /* Header and Back Button */
+      .back-button {
+        font-size: 0.875rem;
+        padding: 0.5rem 1rem;
+        margin-bottom: 1rem;
+        /* Add margin for better spacing */
+      }
+
+      h1 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+      }
+
+      #month-year {
+        font-size: 1.125rem;
+      }
+
+      /* Month Navigation Buttons */
+      #prev-month,
+      #next-month {
+        font-size: 1rem;
+        padding: 0.5rem;
+      }
+
+      /* Grid Layout */
+      .grid-cols-7 {
+        grid-template-columns: repeat(7, 1fr);
+        gap: 6px;
+      }
+
+      /* Day Styles */
+      .day {
+        padding: 10px;
+        font-size: 0.9rem;
+        width: 100%;
+      }
+
+      /* Popup Box */
+      .popup-box {
+        width: 90%;
+        max-width: 260px;
+        padding: 1rem;
+        font-size: 0.9rem;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        left: 50%;
+        transform: translateX(-50%) translateY(20px);
+        /* Centered below date */
+      }
+    }
+
+    /* Small Mobile screens (max-width: 480px) */
+    /* Mobile screens (max-width: 480px) */
+    /* Base Styling (No changes to the original styling) */
+
+    /* Mobile screens (max-width: 480px) */
+    @media (max-width: 520px) {
+      /* Flex Container Adjustments */
+
+      .w-full.max-w-3xl {
+        margin-left: 1.1rem !important;
+        margin-right: 1.1rem !important;
+        box-sizing: border-box;
+      }
+
+      .flex.justify-between.items-center.mb-6 {
+        justify-content: center;
+        /* Center-align the header */
+        flex-direction: column;
+        /* Stack items vertically */
+        gap: 1rem;
+        /* Add spacing between items if needed */
+      }
+
+      /* Center Header */
+      h1 {
+        font-size: 1.5rem;
+        /* Adjust font size as needed */
+        text-align: center;
+        margin: 0;
+        /* Remove extra margin */
+      }
+
+      /* Move Back Button to top */
+      .back-button {
+        position: fixed;
+        top: 1rem;
+        left: 1rem;
+        font-size: 0.75rem;
+        padding: 0.5rem;
+        background-color: #2563eb;
+        color: white;
+        z-index: 10;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Adjust Month-Year Font Size */
+      #month-year {
+        font-size: 1.15rem;
+        text-align: center;
+        margin-top: 1rem;
+        /* Adjust spacing */
+      }
+    }

@@ -122,11 +122,11 @@ function showMeetingDetails(meeting, dayElement) {
 }
 
 // Close the popup box
-function closePopup() {
+window.closePopup = function () {
   popupBox.classList.remove("show");
   popupBox.style.left = ""; // Reset left positioning for next usage
   popupBox.style.top = ""; // Reset top positioning for next usage
-}
+};
 
 // Attach event listeners to meeting days
 function renderCalendar(month, year) {

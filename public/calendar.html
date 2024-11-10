@@ -1,64 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Club Calendar</title>
+    <!-- Include Tailwind CSS from CDN -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/calendar.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Club Calendar</title>
-  <!-- Include Tailwind CSS from CDN -->
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="/css/calendar.css">
-</head>
+  <body class="bg-gray-50 h-screen flex items-center justify-center relative">
+    <!-- Calendar Container -->
+    <div
+      class="w-full max-w-3xl bg-white shadow-lg rounded-lg p-6 sm:p-8 relative"
+    >
+      <!-- Back Button -->
+      <div class="flex justify-between items-center mb-6">
+        <a
+          href="index.html"
+          class="back-button bg-blue-600 text-white px-4 py-2 rounded font-semibold transition-all"
+        >
+          ← Back to Main Page
+        </a>
+        <h1 class="text-2xl sm:text-3xl font-bold text-gray-900">
+          Club Events Calendar
+        </h1>
+      </div>
 
-<body class="bg-gray-50 h-screen flex items-center justify-center relative">
+      <!-- Calendar Header (Month Navigation) -->
+      <div class="flex justify-between items-center mb-4">
+        <button id="prev-month" class="text-blue-600 font-semibold">
+          ← Previous
+        </button>
+        <div id="month-year" class="text-xl font-bold text-gray-800">
+          March 2023
+        </div>
+        <button id="next-month" class="text-blue-600 font-semibold">
+          Next →
+        </button>
+      </div>
 
-  <!-- Calendar Container -->
-  <div class="w-full max-w-3xl bg-white shadow-lg rounded-lg p-6 sm:p-8 relative">
-    <!-- Back Button -->
-    <div class="flex justify-between items-center mb-6">
-      <a href="index.html" class="back-button bg-blue-600 text-white px-4 py-2 rounded font-semibold transition-all">
-        ← Back to Main Page
-      </a>
-      <h1 class="text-2xl sm:text-3xl font-bold text-gray-900">Club Events Calendar</h1>
+      <!-- Calendar Grid -->
+      <div class="grid grid-cols-7 gap-2 text-center text-gray-700 font-medium">
+        <!-- Weekday Headers -->
+        <div>Sun</div>
+        <div>Mon</div>
+        <div>Tue</div>
+        <div>Wed</div>
+        <div>Thu</div>
+        <div>Fri</div>
+        <div>Sat</div>
+      </div>
+      <div class="grid grid-cols-7 gap-2 text-center mt-2" id="calendar-days">
+        <!-- Calendar days will be loaded here by JavaScript -->
+      </div>
+
+      <!-- Popup Box for Meeting Details -->
+      <div id="popup-box" class="popup-box">
+        <p id="popup-date"></p>
+        <p id="popup-details"></p>
+        <button onclick="closePopup()" class="close-button">Close</button>
+      </div>
+
+      <!-- Key for Meetings -->
+      <div class="mt-6 text-center">
+        <span
+          class="inline-block bg-blue-600 text-white px-3 py-1 rounded-full text-xs font-medium"
+        >
+          Blue dates indicate scheduled meetings
+        </span>
+      </div>
     </div>
-
-    <!-- Calendar Header (Month Navigation) -->
-    <div class="flex justify-between items-center mb-4">
-      <button id="prev-month" class="text-blue-600 font-semibold">← Previous</button>
-      <div id="month-year" class="text-xl font-bold text-gray-800">March 2023</div>
-      <button id="next-month" class="text-blue-600 font-semibold">Next →</button>
-    </div>
-
-    <!-- Calendar Grid -->
-    <div class="grid grid-cols-7 gap-2 text-center text-gray-700 font-medium">
-      <!-- Weekday Headers -->
-      <div>Sun</div>
-      <div>Mon</div>
-      <div>Tue</div>
-      <div>Wed</div>
-      <div>Thu</div>
-      <div>Fri</div>
-      <div>Sat</div>
-    </div>
-    <div class="grid grid-cols-7 gap-2 text-center mt-2" id="calendar-days">
-      <!-- Calendar days will be loaded here by JavaScript -->
-    </div>
-
-    <!-- Popup Box for Meeting Details -->
-    <div id="popup-box" class="popup-box">
-      <p id="popup-date"></p>
-      <p id="popup-details"></p>
-      <button onclick="closePopup()" class="close-button">Close</button>
-    </div>
-
-    <!-- Key for Meetings -->
-    <div class="mt-6 text-center">
-      <span class="inline-block bg-blue-600 text-white px-3 py-1 rounded-full text-xs font-medium">
-        Blue dates indicate scheduled meetings
-      </span>
-    </div>
-  </div>
-<script src="/js/calendar.js" type="module"></script>
-</body>
-
+    <script src="/js/calendar.js" type="module"></script>
+  </body>
 </html>

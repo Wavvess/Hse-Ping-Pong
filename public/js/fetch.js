@@ -2,7 +2,7 @@
 
 async function fetchInstagramPosts() {
   try {
-    const response = await fetch('/get-instagram-posts');
+    const response = await fetch("/get-instagram-posts");
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
@@ -11,7 +11,7 @@ async function fetchInstagramPosts() {
     const feedContainer = document.getElementById("instagram-feed");
     feedContainer.innerHTML = "";
 
-    posts.forEach(post => {
+    posts.forEach((post) => {
       const postElement = document.createElement("div");
       postElement.classList.add(
         "bg-white",
@@ -26,11 +26,13 @@ async function fetchInstagramPosts() {
         "hover:scale-105"
       );
 
-      let mediaContent = '';
+      let mediaContent = "";
       if (post.media_type === "IMAGE" || post.media_type === "CAROUSEL_ALBUM") {
         mediaContent = `
           <a href="${post.permalink}" target="_blank">
-            <img src="${post.media_url}" alt="${post.caption || 'Instagram Post'}" class="w-full h-72 object-cover">
+            <img src="${post.media_url}" alt="${
+          post.caption || "Instagram Post"
+        }" class="w-full h-72 object-cover">
           </a>
         `;
       } else if (post.media_type === "VIDEO") {
@@ -46,7 +48,9 @@ async function fetchInstagramPosts() {
       postElement.innerHTML = `
         ${mediaContent}
         <div class="p-4">
-          <p class="text-gray-700 text-sm">${post.caption ? post.caption.substring(0, 100) + '...' : ''}</p>
+          <p class="text-gray-700 text-sm">${
+            post.caption ? post.caption.substring(0, 100) + "..." : ""
+          }</p>
         </div>
       `;
 
@@ -55,7 +59,8 @@ async function fetchInstagramPosts() {
   } catch (error) {
     console.error("Error fetching Instagram posts:", error);
     const feedContainer = document.getElementById("instagram-feed");
-    feedContainer.innerHTML = "<p>Failed to load Instagram posts. Please try again later.</p>";
+    feedContainer.innerHTML =
+      "<p>Failed to load Instagram posts. Please try again later.</p>";
   }
 }
 
