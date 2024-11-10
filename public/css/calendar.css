@@ -49,27 +49,29 @@
   }
   
   .day .tooltip {
-      display: none;
-      position: absolute;
-      bottom: 110%; /* Position tooltip just above the date */
-      left: 50%;
-      transform: translateX(-50%);
-      background-color: rgba(37, 99, 235, 0.85); /* Slightly translucent blue */
-      color: white;
-      padding: 2px 6px; /* Smaller padding for a compact look */
-      border-radius: 4px;
-      font-size: 0.65rem; /* Smaller font size */
-      white-space: nowrap;
-      opacity: 0;
-      transition: opacity 0.2s ease, transform 0.2s ease;
-      z-index: 1;
-  }
+    display: none;
+    position: absolute;
+    bottom: 110%; /* Position tooltip just above the date */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(37, 99, 235, 0.85); /* Blue background */
+    color: white;
+    padding: 6px 10px; /* Slightly reduced padding */
+    border-radius: 6px; /* Softer rounded corners */
+    font-size: 0.75rem; /* Smaller font size */
+    font-weight: 500; /* Medium font weight */
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.15); /* Subtle shadow */
+    z-index: 1;
+}
   
   /* Tooltip styling for special (red) days */
   .special-day .tooltip {
-      background-color: rgba(153, 27, 27, 0.85); /* Dark red tooltip for special days */
-      color: white;
-  }
+    background-color: rgba(153, 27, 27, 0.85); /* Dark red tooltip for special days */
+    color: white;
+}
   
   .day:hover .tooltip {
       display: block;
