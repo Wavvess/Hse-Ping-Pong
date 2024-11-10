@@ -9,165 +9,7 @@
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
   <!-- Include Lucide Icons from CDN -->
   <script src="https://cdn.jsdelivr.net/npm/lucide-react@0.263.1/dist/lucide-react.min.js"></script>
-  <style>
-    /* Previous scrollbar styles remain */
-    ::-webkit-scrollbar {
-      width: 8px;
-    }
-
-    ::-webkit-scrollbar-track {
-      background: #f1f1f1;
-      border-radius: 4px;
-    }
-
-    ::-webkit-scrollbar-thumb {
-      background: #2563eb;
-      border-radius: 4px;
-      transition: background 0.2s;
-    }
-
-    ::-webkit-scrollbar-thumb:hover {
-      background: #1d4ed8;
-    }
-
-    * {
-      scrollbar-width: thin;
-      scrollbar-color: #2563eb #f1f1f1;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    /* New Button Hover Effects */
-    .primary-button {
-      position: relative;
-      overflow: hidden;
-      transition: all 0.3s ease;
-      transform: translateY(0);
-      background: white;
-    }
-
-    .primary-button:before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(37, 99, 235, 0.1);
-      opacity: 0;
-      transition: opacity 0.5s ease;
-    }
-
-    .primary-button {
-      position: relative;
-      overflow: hidden;
-      transition: all 0.3s ease;
-      transform: translateY(0);
-      background: white;
-    }
-
-    .primary-button:before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(37, 99, 235, 0.1);
-      opacity: 0;
-      transition: opacity 0.5s ease;
-    }
-
-    .primary-button:hover {
-      transform: translateY(-2px) scale(1.02);
-      /* Stronger blue glow with higher spread and opacity */
-      box-shadow: 0 4px 15px rgba(37, 99, 235, 0.2), 0 0 15px 5px rgba(37, 99, 235, 0.6);
-    }
-
-    .primary-button:hover:before {
-      opacity: 1;
-    }
-
-    .secondary-button {
-      position: relative;
-      overflow: hidden;
-      transition: all 0.3s ease;
-      transform: translateY(0);
-    }
-
-    .secondary-button:before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(255, 255, 255, 0.2);
-      opacity: 0;
-      transition: opacity 0.5s ease;
-    }
-
-    .secondary-button:hover {
-      transform: translateY(-2px) scale(1.02);
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15), 0 0 8px rgba(255, 255, 255, 0.5);
-    }
-
-    .secondary-button:hover:before {
-      opacity: 1;
-    }
-
-
-
-    .feature-card {
-      transition: all 0.3s ease;
-    }
-
-    .feature-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 20px rgba(37, 99, 235, 0.15);
-    }
-
-    .feature-card:hover svg {
-      transform: scale(1.1);
-      color: #1d4ed8;
-    }
-
-    .feature-card svg {
-      transition: all 0.3s ease;
-    }
-
-    .team-section {
-      filter: grayscale(100%);
-      transition: filter 0.3s ease;
-    }
-
-    .team-section:hover{
-      filter: grayscale(0%);
-    }
-
-    .team-cards{
-      transition: 0.3s ease;
-    }
-    
-    .team-cards:hover{
-      scale:1.01;
-      box-shadow: 3px 4px 14px 0px rgba(0,0,0,0.2);
-    }
-
-    @media(max-width: 768px){
-      .team-cards img{
-        transition: none !important;
-      }
-      .team-cards img:hover{
-        filter: grayscale(100%) !important;
-        scale: 1.00 !important;
-        /* box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1) !important; */
-      }
-      
-    }
-  </style>
+  <link rel="stylesheet" href="/css/index.css">
 </head>
 
 <body>
@@ -328,7 +170,8 @@
           <div class="p-4 sm:p-6">
             <h3 class="text-lg sm:text-xl font-semibold mb-1">Will Howe</h3>
             <p class="text-blue-600 font-medium mb-2 text-sm sm:text-base">Co-Founder</p>
-            <p class="text-gray-600 text-sm sm:text-base">Towering over the table, this absolute unit of a player moves with the speed of a glacier
+            <p class="text-gray-600 text-sm sm:text-base">Towering over the table, this absolute unit of a player moves
+              with the speed of a glacier
             </p>
           </div>
         </div>
@@ -337,7 +180,8 @@
           <div class="p-4 sm:p-6">
             <h3 class="text-lg sm:text-xl font-semibold mb-1">Grant Huffman</h3>
             <p class="text-blue-600 font-medium mb-2 text-sm sm:text-base">Treasury</p>
-            <p class="text-gray-600 text-sm sm:text-base">Said to have been born with a paddle in one hand and a fiery passion in the other
+            <p class="text-gray-600 text-sm sm:text-base">Said to have been born with a paddle in one hand and a fiery
+              passion in the other
             </p>
           </div>
         </div>
@@ -346,7 +190,8 @@
           <div class="p-4 sm:p-6">
             <h3 class="text-lg sm:text-xl font-semibold mb-1">Caleb Clark</h3>
             <p class="text-blue-600 font-medium mb-2 text-sm sm:text-base">Coach</p>
-            <p class="text-gray-600 text-sm sm:text-base">7th Grader taking High School classes, a ping pong maestro. Taught by Ben Odom. 
+            <p class="text-gray-600 text-sm sm:text-base">7th Grader taking High School classes, a ping pong maestro.
+              Taught by Ben Odom.
             </p>
           </div>
         </div>
@@ -357,20 +202,26 @@
   <!-- Social Section: Instagram Feed -->
   <div class="bg-gray-50 py-12 sm:py-24" id="instagram-section">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-12 sm:mb-16">
+      <div class="text-center mb-4 sm:mb-12 latest-box">
         <span class="inline-block bg-blue-600 text-white px-3 py-1 rounded-full text-xs font-medium mb-4">Follow Us on
           Instagram</span>
         <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Latest Posts</h2>
         <p class="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto">Catch up with our latest updates and moments.</p>
       </div>
 
-      <div id="instagram-feed" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- Instagram posts will be loaded here -->
+      <!-- Horizontal Scroll Container -->
+      <div class="overflow-x-auto">
+        <div id="instagram-feed">
+          <!-- Instagram posts will be loaded here -->
+        </div>
+      </div>
+      <div class="text-center mt-8">
+        <p class="text-lg sm:text-xl text-gray-600">
+          A special thanks to <span class="text-blue-700 font-medium blue-text-shadow">Ben Odom</span> for taking <span>full</span> control of our Social Media Campaign!
+        </p>        
       </div>
     </div>
   </div>
-
-  <!-- FOR THE INSTAGRAM SECTION, ADD A TEXT AT THE BOTTOM SAYING "A special thanks to Ben Odom for taking full control of our Social Media Campaign!" -->
 
   <!-- CTA Section -->
   <div class="bg-blue-600 text-white py-12 sm:py-24">
@@ -390,5 +241,6 @@
     </div>
   </div>
   </div>
+  <script type="module" src="/js/fetch.js"></script>
 </body>
 </html>
