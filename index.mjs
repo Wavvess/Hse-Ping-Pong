@@ -1,7 +1,10 @@
+// index.mjs
 import express from "express";
 import dotenv from "dotenv";
 import path from "path";
 import { fileURLToPath } from "url";
+import admin from "firebase-admin";
+import tournamentRoutes from "./tournamentRoutes.js"; // Import tournament routes
 
 dotenv.config();
 const app = express();
@@ -11,8 +14,22 @@ const PORT = process.env.PORT || 3000;
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+// Middleware to parse JSON bodies
+app.use(express.json());
+
+// Initialize Firebase Admin SDK
+const serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT_KEY);
+
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+  databaseURL: "https://hsepingpong-default-rtdb.firebaseio.com",
+});
+
 // Serve static files from the 'public' folder
 app.use(express.static(path.join(__dirname, "./public")));
+
+// Use tournament routes for API endpoints
+app.use("/api", tournamentRoutes);
 
 // Route to fetch Instagram posts
 app.get("/get-instagram-posts", async (req, res) => {
@@ -60,6 +77,11 @@ app.get("/get-instagram-posts", async (req, res) => {
     console.error("Error fetching Instagram posts:", error);
     res.status(500).json({ error: "Failed to fetch Instagram posts" });
   }
+});
+
+// Serve scoring.html and scoring.css as a separate subpage
+app.get("/scoring", (req, res) => {
+  res.sendFile(path.join(__dirname, "./public/scoring.html"));
 });
 
 // Start the server
