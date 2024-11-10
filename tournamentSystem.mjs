@@ -1,5 +1,5 @@
-// tournamentSystem.js
-import admin from "firebase-admin";
+// tournamentSystem.mjs
+import admin from "./firebaseAdmin.mjs";
 
 const db = admin.database();
 

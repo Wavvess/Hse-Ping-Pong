@@ -1,6 +1,6 @@
 // tournamentRoutes.js
 import express from "express";
-import tournamentSystem from "./tournamentSystem.js";
+import tournamentSystem from "./tournamentSystem.mjs";
 
 const router = express.Router();
 

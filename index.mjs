@@ -1,12 +1,9 @@
 // index.mjs
 import express from "express";
-import dotenv from "dotenv";
 import path from "path";
 import { fileURLToPath } from "url";
-import admin from "firebase-admin";
-import tournamentRoutes from "./tournamentRoutes.js"; // Import tournament routes
+import tournamentRoutes from "./tournamentRoutes.mjs"; // Import tournament routes
 
-dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 
