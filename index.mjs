@@ -1,4 +1,7 @@
 // index.mjs
+import dotenv from "dotenv";
+dotenv.config(); // Load environment variables before other imports
+
 import express from "express";
 import path from "path";
 import { fileURLToPath } from "url";
@@ -13,14 +16,6 @@ const __dirname = path.dirname(__filename);
 
 // Middleware to parse JSON bodies
 app.use(express.json());
-
-// Initialize Firebase Admin SDK
-const serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT_KEY);
-
-admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
-  databaseURL: "https://hsepingpong-default-rtdb.firebaseio.com",
-});
 
 // Serve static files from the 'public' folder
 app.use(express.static(path.join(__dirname, "./public")));
@@ -76,7 +71,7 @@ app.get("/get-instagram-posts", async (req, res) => {
   }
 });
 
-// Serve scoring.html and scoring.css as a separate subpage
+// Serve scoring.html as a separate subpage
 app.get("/scoring", (req, res) => {
   res.sendFile(path.join(__dirname, "./public/scoring.html"));
 });

@@ -6,21 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HSE Ping Pong Tournament</title>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="scoring.css">
-   <script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-database-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-auth-compat.js"></script>
-
-    
+    <link rel="stylesheet" href="/css/scoring.css">
 
     <!-- External Libraries -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jsSHA/3.2.0/sha256.min.js"></script>
-     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <!-- Particle Background -->
@@ -136,128 +129,18 @@
                     <h3>Login to View Profile</h3>
                     <div class="form-group">
                         <input type="email" id="profile-email" class="form-input" 
-                            placeholder="HSE Email (e.g., smithjoh000@hsestudents.org)" value="kohlmjen000@hsestudents.org">
+                            placeholder="HSE Email (e.g., smithjoh000@hsestudents.org)">
                         <input type="password" id="profile-password" class="form-input" 
-                            placeholder="Password" value="HSEPingPong2024">
-                        <button onclick="tournament.ui.loginProfile()" class="btn btn-primary">Login</button>
+                            placeholder="Password">
+                        <button onclick="tournamentUI.loginProfile()" class="btn btn-primary">Login</button>
                     </div>
                 </div>
                 <div id="profile-content" class="card-content hidden">
-                    <div class="profile-header">
-                        <h2>${profile.name}</h2>
-                        <p class="text-muted">Matches: ${playerMatches.length} | Wins: ${wins}</p>
-                        <div class="badge-collection">
-                            ${profile.achievements.map(achievementId => {
-                                const achievement = this.system.achievements.find(a => a.id === achievementId);
-                                return achievement ? `<div class="badge" title="${achievement.name}">${achievement.badge}</div>` : '';
-                            }).join('')}
-                        </div>
-                    </div>
-
-                    <div class="stats-section">
-                        <div class="mmr-chart-container">
-                            <h3>MMR History</h3>
-                            <canvas id="mmrHistoryChart"></canvas>
-                            <div class="mmr-details">
-                                ${this.renderMmrHistory(playerMatches, profile.name)}
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="achievements-section">
-                        <h3>Achievements</h3>
-                        <div class="achievements-grid">
-                            ${this.renderDetailedAchievements(profile, playerMatches)}
-                        </div>
-                    </div>
+                    <!-- Profile content will be dynamically inserted here -->
                 </div>
             </div>
         </section>
     </main>
-
-    <!-- Match History Modal -->
-    <div id="match-history-modal" class="modal">
-        <div class="modal-content">
-            <span class="modal-close" onclick="tournament.ui.closeModal('match-history-modal')">&times;</span>
-            <h3 id="modal-player-name"></h3>
-            <table class="leaderboard-table">
-                <thead>
-                    <tr>
-                        <th>Date</th>
-                        <th>Opponent</th>
-                        <th>Result</th>
-                        <th>MMR Change</th>
-                    </tr>
-                </thead>
-                <tbody id="match-history-body">
-                    <!-- Populated by JavaScript -->
-                </tbody>
-            </table>
-        </div>
-    </div>
-
-    <!-- Match List Modal -->
-    <div id="match-list-modal" class="modal">
-        <div class="modal-content">
-            <span class="modal-close" onclick="tournament.ui.closeModal('match-list-modal')">&times;</span>
-            <h3>All Matches</h3>
-            <table class="leaderboard-table">
-                <thead>
-                    <tr>
-                        <th>Date</th>
-                        <th>Player 1</th>
-                        <th>Player 2</th>
-                        <th>Winner</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody id="match-list-body">
-                    <!-- Populated by JavaScript -->
-                </tbody>
-            </table>
-        </div>
-    </div>
-
-    <!-- Match Manager Modal -->
-    <div id="match-manager-modal" class="modal">
-        <div class="modal-content match-manager-content">
-            <div class="modal-header">
-                <h3>Manage Matches</h3>
-                <button class="modal-close" onclick="tournament.ui.closeModal('match-manager-modal')">&times;</button>
-            </div>
-            <div class="match-manager-controls">
-                <div class="search-filter">
-                    <input type="text" id="match-search" placeholder="Search players..." class="form-input">
-                    <select id="match-filter" class="form-input">
-                        <option value="all">All Matches</option>
-                        <option value="today">Today</option>
-                        <option value="week">This Week</option>
-                        <option value="month">This Month</option>
-                    </select>
-                </div>
-            </div>
-            <div class="match-manager-body">
-                <table class="match-table">
-                    <thead>
-                        <tr>
-                            <th>Date</th>
-                            <th>Players</th>
-                            <th>Winner</th>
-                            <th>Score</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody id="match-manager-tbody">
-                    </tbody>
-                </table>
-            </div>
-            <div class="match-manager-pagination">
-                <button id="prev-page" class="btn btn-secondary">&lt; Previous</button>
-                <span id="page-info">Page 1 of 1</span>
-                <button id="next-page" class="btn btn-secondary">Next &gt;</button>
-            </div>
-        </div>
-    </div>
 
     <!-- Scripts -->
     <script src="/js/scoring.js"></script>

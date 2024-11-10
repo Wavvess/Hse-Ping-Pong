@@ -1,4 +1,4 @@
-// tournamentRoutes.js
+// tournamentRoutes.mjs
 import express from "express";
 import tournamentSystem from "./tournamentSystem.mjs";
 

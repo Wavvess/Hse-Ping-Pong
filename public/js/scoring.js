@@ -103,7 +103,7 @@ class TournamentUI {
         // Admin login handler
         window.adminLogin = () => {
             const password = document.getElementById('admin-password').value;
-            // For demo purposes, the password is 'admin123'
+            // Replace 'admin123' with your actual admin password
             if (password === 'admin123') {
                 loginForm.classList.add('hidden');
                 adminControls.classList.remove('hidden');
