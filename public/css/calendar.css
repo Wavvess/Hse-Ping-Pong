@@ -145,7 +145,7 @@
   }
   
   .popup-box.special-day-popup #popup-details {
-      color: #991b1b; /* Dark red text color for details on special days */
+    color: #4b5563;
   }
   
   .popup-box.special-day-popup .close-button {
