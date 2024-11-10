@@ -7,113 +7,81 @@
     .day {
       position: relative;
       padding: 12px;
-      background-color: #f3f4f6;
-      /* Soft gray background */
+      background-color: #f3f4f6; /* Soft gray background */
       border-radius: 8px;
       font-size: 1rem;
       color: #333;
       cursor: pointer;
       transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .day:hover {
+  }
+  
+  .day:hover {
       background-color: #2563eb;
       color: #ffffff;
       transform: translateY(-2px);
-      box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3);
-      /* Blue box shadow on hover */
-    }
-
-    /* Meeting Day Styles */
-    .meeting-day {
+      box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3); /* Blue box shadow on hover */
+  }
+  
+  /* Meeting Day Styles */
+  .meeting-day {
       background-color: #2563eb;
       color: white;
-    }
-
-    /* Tooltip Styling */
-    .day {
+  }
+  
+  .meeting-day .tooltip {
+      background-color: rgba(37, 99, 235, 0.85); /* Blue tooltip for meeting days */
+  }
+  
+  /* Special Day Styles */
+  .special-day {
+      background-color: #fecaca; /* Slightly darker red background for special days */
+      color: #991b1b; /* Darker red text color */
+  }
+  
+  .special-day:hover {
+      background-color: #fecaca; /* Keep the same background color */
+      color: #991b1b; /* Keep the same text color */
+  }
+  
+  /* Tooltip Styling */
+  .day {
       position: relative;
-    }
-
-    .day .tooltip {
-      display: none;
-      position: absolute;
-      bottom: 110%;
-      /* Position tooltip just above the date */
-      left: 50%;
-      transform: translateX(-50%);
-      background-color: rgba(37, 99, 235, 0.85);
-      /* Slightly translucent blue */
-      color: white;
-      padding: 2px 6px;
-      /* Smaller padding for a compact look */
-      border-radius: 4px;
-      font-size: 0.65rem;
-      /* Smaller font size */
-      white-space: nowrap;
-      opacity: 0;
-      transition: opacity 0.2s ease, transform 0.2s ease;
-      z-index: 1;
-    }
-
-    .day:hover .tooltip {
+  }
+  
+  .day .tooltip {
+    display: none;
+    position: absolute;
+    bottom: 110%; /* Position tooltip just above the date */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(37, 99, 235, 0.85); /* Blue background */
+    color: white;
+    padding: 6px 10px; /* Slightly reduced padding */
+    border-radius: 6px; /* Softer rounded corners */
+    font-size: 0.75rem; /* Smaller font size */
+    font-weight: 500; /* Medium font weight */
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.15); /* Subtle shadow */
+    z-index: 1;
+}
+  
+  /* Tooltip styling for special (red) days */
+  .special-day .tooltip {
+    background-color: rgba(153, 27, 27, 0.85); /* Dark red tooltip for special days */
+    color: white;
+}
+  
+  .day:hover .tooltip {
       display: block;
       opacity: 1;
-      transform: translateX(-50%) translateY(-2px);
-      /* Small lift effect */
-    }
+      transform: translateX(-50%) translateY(-2px); /* Small lift effect */
+  }
+  
 
 
     /* Popup Box Styling */
-    .popup-box {
-      display: none;
-      position: absolute;
-      width: 220px;
-      padding: 1.5rem;
-      background: rgba(255, 255, 255, 0.9);
-      border-radius: 12px;
-      backdrop-filter: blur(10px);
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-      z-index: 10;
-      text-align: left;
-      opacity: 0;
-      transform: translateX(20px);
-      /* Starts off slightly to the right */
-      transition: transform 0.3s ease, opacity 0.3s ease;
-    }
-
-    .popup-box.show {
-      display: block;
-      opacity: 1;
-    }
-
-    /* Tooltip styling */
-    .day {
-      position: relative;
-    }
-
-    .day .tooltip {
-      display: none;
-      position: absolute;
-      bottom: 100%;
-      left: 50%;
-      transform: translateX(-50%);
-      background-color: #2563eb;
-      color: white;
-      padding: 4px 8px;
-      border-radius: 4px;
-      font-size: 0.75rem;
-      white-space: nowrap;
-      opacity: 0;
-      transition: opacity 0.2s ease;
-      z-index: 1;
-    }
-
-    .day:hover .tooltip {
-      display: block;
-      opacity: 1;
-    }
-
     .popup-box {
       /* Existing popup styles */
       display: none;
@@ -128,56 +96,68 @@
       text-align: left;
       opacity: 0;
       transition: transform 0.3s ease, opacity 0.3s ease;
-    }
-
-    .popup-box.show {
+  }
+  
+  .popup-box.show {
       display: block;
       opacity: 1;
-    }
-
-
-    .popup-box.show {
-      display: block;
-      opacity: 1;
-      transform: translateX(0);
-      /* Slide into view */
-    }
-
-    .popup-box.left {
+      transform: translateX(0); /* Slide into view */
+  }
+  
+  /* Slide in from the left if needed */
+  .popup-box.left {
       transform: translateX(-20px);
-      /* Slide in from the left */
-    }
-
-    #popup-date {
+  }
+  
+  /* Default styling for date and details text */
+  #popup-date {
       font-size: 1.2rem;
-      color: #1d4ed8;
+      color: #1d4ed8; /* Default blue text color */
       font-weight: bold;
       margin-bottom: 0.5rem;
-    }
-
-    #popup-details {
+  }
+  
+  #popup-details {
       font-size: 1rem;
-      color: #4b5563;
-    }
-
-    .close-button {
+      color: #4b5563; /* Default gray text color */
+  }
+  
+  /* Close button default styling */
+  .close-button {
       display: block;
       margin-top: 1.5rem;
       padding: 0.5rem 1rem;
-      background-color: #2563eb;
+      background-color: #2563eb; /* Default blue button color */
       color: white;
       text-align: center;
       font-weight: bold;
       border-radius: 8px;
       cursor: pointer;
       transition: background 0.3s;
-    }
-
-    .close-button:hover {
+  }
+  
+  .close-button:hover {
       scale: 1.05;
       background-color: #1d4ed8;
-    }
-
+  }
+  
+  /* Special styling for red-themed special days */
+  .popup-box.special-day-popup #popup-date {
+      color: #991b1b; /* Dark red text color for special days */
+  }
+  
+  .popup-box.special-day-popup #popup-details {
+    color: #4b5563;
+  }
+  
+  .popup-box.special-day-popup .close-button {
+      background-color: #991b1b; /* Red button for special days */
+  }
+  
+  .popup-box.special-day-popup .close-button:hover {
+      background-color: #7f1d1d; /* Darker red on hover */
+  }
+  
     /* Responsive Adjustments */
 
     /* Tablet screens and below (max-width: 768px) */
